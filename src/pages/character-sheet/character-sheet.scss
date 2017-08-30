@@ -1,3 +1,172 @@
 page-character-sheet {
-
+    $highlightColor: red;
+    $highlightColorText: white;
+    $highlightSubBackColor: #DFBFBF;
+    .editHeader {
+        .toolbar-background,
+        .toolbar-background-md {
+            background-color: $highlightColor;
+        }
+        .bar-button,
+        .bar-button-md,
+        .toolbar-title,
+        .toolbar-title-md {
+            color: $highlightColorText;
+        }
+    }
+    .item-md.item-block .item-inner,
+    .item.item-block .item-inner,
+    .item-inner .input-wrapper .label,
+    .itemFixer {
+        margin: 0em;
+        padding: 0em;
+        font-size: 1em;
+        border: none;
+    }
+    .statWrapper {
+        margin: 0em;
+        padding: 0em;
+    }
+    .stat {
+        border-bottom: 1px solid #dedede;
+        font-size: 1.2em;
+        padding: 1em 1.2em 1em 1.2em;
+        margin: 0em 0em 0em 0em;
+    }
+    .name {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-size: 1.05em;
+        margin: 0;
+        padding: 0;
+    }
+    .valueWrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+    .value {
+        flex: 1;
+        display: flex;
+        font-size: 1em;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .maximum {
+        display: none;
+    }
+    .type {
+        font-size: .9em;
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+    .visible .value {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex: 1;
+        font-size: 1em;
+        padding-top: .2em;
+    }
+    .visible .maximum {
+        color: #938585;
+        font-size: .65em;
+        flex: 1;
+        justify-content: flex-end;
+        align-items: center;
+        display: flex;
+        margin-bottom: -1.25em;
+    }
+    // .visible>.name {
+    //     margin-bottom: .4em;
+    // }
+    // .visible>.type {
+    //     margin-bottom: .4em;
+    // }
+    .list,
+    .list-md {
+        padding: 0em;
+        margin: 0em;
+        display: flex;
+        flex-direction: column;
+    }
+    .list-header,
+    .list-header-md {
+        background-color: $highlightColor;
+        border: none;
+        color: $highlightColorText;
+        margin: 0em;
+        font-size: 1.2em;
+        padding: .55em;
+        display: flex;
+        flex: 1;
+        .button.button-clear,
+        .button-md.button-clear-md {
+            margin: 0;
+            color: $highlightColorText;
+        }
+    }
+    .item.item-block.item-input,
+    .item-md.item-block.item-input,
+    .item-md.item-block.item-input {
+        background-color: $highlightSubBackColor;
+        border: none;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    // .rangeHeader {
+    //     display: flex;
+    //     align-items: center;
+    // }
+    .rangeValue {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .rangeSlider {
+        color: $highlightColorText;
+        .rangeLeft.label,
+        .rangeLeft.label-md {
+            margin-right: 1em;
+        }
+        .rangeRight.label,
+        .rangeRight.label {
+            margin-left: 1em;
+        }
+    }
+    // .rangeButtons {
+    //     justify-content: flex-end;
+    // }
+    .item-range {
+        padding: 0px 16px 0px 16px;
+        background-color: $highlightSubBackColor;
+    }
+    .formEdit {
+        background-color: $highlightSubBackColor;
+        .button-clear,
+        .button-clear-md {
+            color: $highlightColorText;
+        }
+        .formEditInput input {
+            background-color: $highlightSubBackColor;
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            border: 0px;
+            color: $highlightColorText;
+            border-bottom: 1px solid $highlightColorText;
+        }
+        input::placeholder {
+            //for reference
+        }
+    }
 }

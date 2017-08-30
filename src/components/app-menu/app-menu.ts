@@ -27,7 +27,7 @@ export class AppMenuComponent {
   }
 
   logout() {
-    this.store.dispatch(new UserActions.Delete());
+    this.store.dispatch(new UserActions.Logout());
   }
 
   charList() {

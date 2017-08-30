@@ -36,7 +36,7 @@ export class CharacterSheet implements Action {
 
 export class CreateStat implements Action {
     readonly type = CREATE_STAT;
-    constructor() { }
+    constructor(public payload?: string) { }
 }
 
 export class Back implements Action {

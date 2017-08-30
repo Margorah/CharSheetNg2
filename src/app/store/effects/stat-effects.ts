@@ -140,13 +140,12 @@ export class StatEffects {
   
     @Effect()
     update$: Observable<Action> = this.actions$.ofType(StatActions.UPDATE)
-        .map(toPayload)
-        .mergeMap((charStat) => {
-            this.storage.setStat(charStat)
-            return [
-                new StatActions.UpdateNetwork(charStat),
-                new StatActions.Unselect()
-            ];
+        // .map(toPayload)
+        .withLatestFrom(this.store$.select(fromRoot.getStatLateCharId), (action, state) => state)      
+        .map((state) => {
+            this.storage.setStat(state.stat)
+            this.storage.setStatMetaState(state.charId, state.meta.ids, state.meta.selectedId);
+            return new StatActions.UpdateNetwork(state.stat);
         });
 
     @Effect()
@@ -172,7 +171,7 @@ export class StatEffects {
 
     @Effect({dispatch: false})
     unselect$: Observable<Action> = this.actions$.ofType(StatActions.UNSELECT)
-    .withLatestFrom(this.store$.select(fromRoot.getStatLateCharId), (action, state) => state)
+        .withLatestFrom(this.store$.select(fromRoot.getStatLateCharId), (action, state) => state)
         .map((state) => {
             this.storage.setStatMetaState(state.charId, state.meta.ids, state.meta.selectedId);
             return null;

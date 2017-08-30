@@ -73,7 +73,7 @@ export function reducer(state = initialState, action: StatActions.All): StatStat
             return {
                 ids: [...state.ids],
                 entities: Object.assign({}, state.entities, {[updatedStat.id]: updatedStat}),
-                selectedStatId: state.selectedStatId
+                selectedStatId: null
             };
         }
         case StatActions.SELECT: {

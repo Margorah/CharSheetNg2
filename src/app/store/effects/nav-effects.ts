@@ -57,44 +57,16 @@ export class NavEffects {
 
     @Effect({dispatch: false})
     createStatNav: Observable<Action> = this.actions$.ofType(NavActions.CREATE_STAT)
-        .withLatestFrom(this.store$.select(fromRoot.getNavStackPage), (action, page) => {
-            this.navCtrl().push(page);
+        .map(toPayload)
+        .withLatestFrom(this.store$.select(fromRoot.getNavStackPage), (mode, page) => {
+            if (mode) {
+                this.navCtrl().push(page, mode);
+            } else {
+                this.navCtrl().push(page);               
+            }
             return null;
         });
-    
-    // // Complex Check to move to proper page when local data loads?
-    // @Effect()
-    // load$: Observable<Action> = this.actions$.ofType(NavActions.LOAD)
-    //     .map(() => {
-    //         let newAction;
-    //         const newState = this.storage.getNavState();
-
-    //         if (newState === null) {
-    //             newAction = new NavActions.LoadNone();
-    //             // this.navCtrl().setRoot(PAGES.login);
-    //         } else {
-    //             newAction = new NavActions.LoadSuccess(newState);
-    //         }
-    //         return newAction;
-    //     });
-    
-    // @Effect({dispatch: false})
-    // loadSuccess$: Observable<Action> = this.actions$.ofType(NavActions.LOAD_SUCCESS)
-    //     .map(toPayload)
-    //     .do((payload) => {
-    //         this.navCtrl().setRoot(payload.root);
-    //         return null;
-    //     });
-    
-    // // Complex Check to move to proper page when local data collapses?
-    // @Effect({dispatch: false})
-    // begin$: Observable<Action> = 
-    //     this.actions$.ofType(UserActions.LOAD_NONE || UserActions.LOAD_ERROR || NavActions.LOAD_NONE || NavActions.LOAD_ERROR)
-    //         .map(() => {
-    //             this.navCtrl().setRoot(PAGES.login);
-    //             return null;
-    //         });
-
+   
     constructor(private actions$: Actions,
                 private store$: Store<fromRoot.State>,
                 private app: App) { }

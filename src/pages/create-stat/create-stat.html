@@ -5,16 +5,22 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="primary">
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>{{ title }}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="createStat()" [disabled]="addStatForm.invalid">
+                <ion-icon name="create">
+                </ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <form [formGroup]="addStatForm" (ngSubmit)="createStat()">
+    <form [formGroup]="addStatForm">
         <ion-list>
             <ion-item>
                 <ion-label floating>Name</ion-label>
@@ -33,6 +39,11 @@
                 <ion-input name="name" type="text" formControlName="type"></ion-input>
             </ion-item>
         </ion-list>
-        <button ion-button full type="submit" [disabled]="addStatForm.invalid">Create Stat</button>
     </form>
 </ion-content>
+
+<!-- <ion-footer>
+    <ion-toolbar color="primary" padding-left padding-right>
+        <button ion-button full color="secondary" type="button" (click)="createStat()" [disabled]="addStatForm.invalid">Create Stat</button>
+    </ion-toolbar>
+</ion-footer> -->
