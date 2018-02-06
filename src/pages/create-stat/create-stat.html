@@ -13,7 +13,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
     <form [formGroup]="addStatForm" id="createStatForm">
         <ion-list>
             <ion-item>
@@ -24,14 +24,42 @@
                 <ion-label floating>Value</ion-label>
                 <ion-input name="value" type="number" formControlName="value"></ion-input>
             </ion-item>
-            <ion-item>
-                <ion-label floating>Maximum</ion-label>
-                <ion-input name="maximum" type="number" formControlName="maximum"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Type</ion-label>
-                <ion-input name="type" type="text" formControlName="type"></ion-input>
-            </ion-item>
+            <div *ngIf="statHasAMax === true; then AMAX else NOMAX"></div>
+            <ng-template #AMAX>
+                <ion-item>
+                    <ion-label floating>Maximum</ion-label>
+                    <ion-input name="maximum" type="number" formControlName="maximum"></ion-input>
+                    <button (click)="toggleMax()" class="propertyToggle" ion-button icon-only default item-right>
+                        <ion-icon name="close"></ion-icon>
+                    </button>
+                </ion-item>
+            </ng-template>
+            <ng-template #NOMAX>
+                <ion-item-divider>
+                    <span>No Maximum</span>
+                    <button (click)="toggleMax()" class="propertyToggle" ion-button icon-only default item-right>
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                </ion-item-divider>
+            </ng-template>
+            <div *ngIf="statHasAType === true; then ATYPE else NOTYPE"></div>
+            <ng-template #ATYPE>
+                <ion-item>
+                    <ion-label floating>Type</ion-label>
+                    <ion-input name="type" type="text" formControlName="type"></ion-input>
+                    <button (click)="toggleType()" class="propertyToggle" ion-button icon-only default item-right>
+                        <ion-icon name="close"></ion-icon>
+                    </button>
+                </ion-item>
+            </ng-template>
+            <ng-template #NOTYPE>
+                <ion-item-divider>
+                    <span>No Type</span>
+                    <button (click)="toggleType()" class="propertyToggle" ion-button icon-only default item-right>
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                </ion-item-divider>
+            </ng-template>
             <ion-item>
                 <ion-label floating>Interface</ion-label>
                 <!-- <ion-input name="component" type="text" formControlName="component"></ion-input> -->
@@ -39,9 +67,12 @@
                     <!-- unfortunately, for now, new components will be hand added -->
                     <ion-option value="form">Text</ion-option>
                     <ion-option value="button">Button</ion-option>
-                    <ion-option value="slide">Slider</ion-option>
+                    <ion-option *ngIf="statHasAMax === true" value="slide">Slider</ion-option>
                 </ion-select>
             </ion-item>
+            <!-- <ion-item *ngIf="addStatForm.get('maximum').value != 0">
+                {{addStatForm.get('maximum').value}}
+            </ion-item> -->
         </ion-list>
     </form>
 </ion-content>

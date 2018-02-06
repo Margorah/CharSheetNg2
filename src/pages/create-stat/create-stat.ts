@@ -33,6 +33,9 @@ export class CreateStatPage {
 
   private title: string;
 
+  private statHasAMax = true;
+  private statHasAType = true;
+
   private statId: string;
   private stat: Observable<CharacterStat>;
   private statSub: Subscription;
@@ -106,6 +109,25 @@ export class CreateStatPage {
       this.store.dispatch(new StatActions.Unselect());
       this.store.dispatch(new NavActions.Back());
     };
+  }
+
+  toggleMax() {
+    if (this.statHasAMax === true) {
+      this.maximum.setValue(0);
+      this.component.setValue('');
+    } else {
+      this.maximum.setValue('');
+    }
+    this.statHasAMax = !this.statHasAMax;
+  }
+
+  toggleType() {
+    if (this.statHasAType === true) {
+      this.type.setValue('NOTYPE');
+    } else {
+      this.type.setValue('');
+    }
+    this.statHasAType = !this.statHasAType;
   }
 
   ngOnDestroy() {

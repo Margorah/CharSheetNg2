@@ -138,4 +138,16 @@ $text-input-md-highlight-color: $primary;
             }
         }
     }
+    page-create-stat {
+        .item {
+            .propertyToggle {
+                background-color: $primaryDark;
+            }
+        }
+        .item-divider {
+            .propertyToggle {
+                background-color: $primary;
+            }
+        }
+    }
 }

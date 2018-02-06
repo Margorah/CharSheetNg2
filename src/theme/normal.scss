@@ -118,4 +118,16 @@ $lightGrey: #F5F5F6;
             }
         }
     }
+    page-create-stat {
+        .item {
+            .propertyToggle {
+                background-color: $primaryDark;
+            }
+        }
+        .item-divider {
+            .propertyToggle {
+                background-color: $primary;
+            }
+        }
+    }
 }
