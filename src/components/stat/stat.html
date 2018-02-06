@@ -1,21 +1,34 @@
 <ion-item-sliding>
     <button ion-item (click)="selectStat()" class="itemFixer">
         <ion-grid class="statWrapper">
-            <ion-row col-12 class="stat" [ngClass]="{'visible': getVis(stat.value, stat.maximum)}">
+            <ion-row col-12 class="stat" [ngClass]="{'visible': getVis()}">
                 <ion-col col-5 class="name">
                     {{ stat.name }}
                 </ion-col>
-                <ion-col col-3 class="valueWrapper">
-                    <span class="value">
-                        {{ stat.value }}
-                    </span>
-                    <span class="maximum">
-                        {{ stat.maximum }}
-                    </span>
-                </ion-col>
-                <ion-col col-4 text-right class="type">
-                    {{ stat.type }}
-                </ion-col>
+                <div *ngIf="displayType(); then YES else NO"></div>
+                <ng-template #YES>
+                    <ion-col col-3 class="valueWrapper">
+                        <span class="value">
+                            {{ stat.value }}
+                        </span>
+                        <span class="maximum">
+                            {{ stat.maximum }}
+                        </span>
+                    </ion-col>
+                    <ion-col col-4 text-right class="type">
+                        {{ stat.type }}
+                    </ion-col>
+                </ng-template>
+                <ng-template #NO>
+                    <ion-col col-7 text-right class="valueWrapper">
+                        <span class="value">
+                            {{ stat.value }}
+                        </span>
+                        <span class="maximum">
+                            {{ stat.maximum }}
+                        </span>
+                    </ion-col>
+                </ng-template>
             </ion-row>
         </ion-grid>
     </button>
