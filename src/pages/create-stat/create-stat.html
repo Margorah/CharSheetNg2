@@ -3,7 +3,11 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>{{ title }}</ion-title>
+        <ion-title>
+            <div *ngIf="params.data === 'EDITMODE'; then edit else normal"></div>
+            <ng-template #normal>Create A Stat</ng-template>
+            <ng-template #edit>Edit {{ ( stat | async )?.name }}</ng-template>
+        </ion-title>
         <ion-buttons end>
             <button ion-button icon-only (click)="createStat()" form="createStatForm" type="submit" [disabled]="addStatForm.invalid">
                 <ion-icon name="create">
@@ -76,9 +80,3 @@
         </ion-list>
     </form>
 </ion-content>
-
-<!-- <ion-footer>
-    <ion-toolbar color="primary" padding-left padding-right>
-        <button ion-button full color="secondary" type="button" (click)="createStat()" [disabled]="addStatForm.invalid">Create Stat</button>
-    </ion-toolbar>
-</ion-footer> -->
