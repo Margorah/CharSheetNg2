@@ -39,10 +39,10 @@ export class CreateStatPage {
 
   ngOnInit() {   
     this.name = new FormControl('', Validators.required);
-    this.value = new FormControl('', Validators.required);
     this.maximum = new FormControl('', Validators.required);
     this.type = new FormControl('', Validators.required);
     this.component = new FormControl('', Validators.required);
+    this.value = new FormControl('', Validators.required);
     
     this.addStatForm = new FormGroup({
       name: this.name,
@@ -50,18 +50,18 @@ export class CreateStatPage {
       maximum: this.maximum,
       type: this.type,
       component: this.component
-    });
+    }, Validators.compose([Validators.required, this.valueAboveBounds.bind(this), this.valueBelowBounds.bind(this)]));
 
     this.statSub = this.store.select(fromRoot.getStat).subscribe((stat) => {   
       if (this.params.data === 'EDITMODE' && stat) {
 
         this.statId = stat.id;
-        let group = this.addStatForm;
-        group.get('name').setValue(stat.name);
-        group.get('value').setValue(stat.value);
-        group.get('maximum').setValue(stat.maximum);
-        group.get('type').setValue(stat.type); 
-        group.get('component').setValue(stat.component);
+
+        this.name.setValue(stat.name);
+        this.value.setValue(stat.value);
+        this.maximum.setValue(stat.maximum);
+        this.type.setValue(stat.type); 
+        this.component.setValue(stat.component);
 
         // Make sure form displays correctly when loading in EDITMODE
         if (stat.maximum === 0) {
@@ -100,20 +100,25 @@ export class CreateStatPage {
   }
 
   toggleMax() {
-    if (this.statHasAMax === true) {
+    if (this.statHasAMax == false) {
+      this.maximum.markAsUntouched();
+
+      this.statHasAMax = !this.statHasAMax;
+      this.maximum.setValue('');
+    } else {
+      this.statHasAMax = !this.statHasAMax;
+
       this.maximum.setValue(0);
       this.component.setValue('');
-    } else {
-      this.maximum.setValue('');
     }
-    this.statHasAMax = !this.statHasAMax;
   }
 
   toggleType() {
-    if (this.statHasAType === true) {
+    if (this.statHasAType == true) {
       this.type.setValue('NOTYPE');
     } else {
       this.type.setValue('');
+      this.type.markAsUntouched();
     }
     this.statHasAType = !this.statHasAType;
   }
@@ -122,4 +127,19 @@ export class CreateStatPage {
     this.statSub.unsubscribe();
   }
 
+  valueAboveBounds(group: FormGroup): {[s: string]: boolean} {
+    const ctrlValue = group.get('value');
+    const ctrlMaximum = group.get('maximum');
+    if (this.statHasAMax == true && ctrlValue.value > ctrlMaximum.value) {
+      return {'valueAboveMax': true}
+    }
+  }
+
+  valueBelowBounds(group: FormGroup): {[s: string]: boolean} {
+    const ctrlValue = group.get('value');
+    const ctrlMaximum = group.get('maximum');
+    if (this.statHasAMax == true && ctrlValue.value < 0) {
+      return {'valueBelowZero': true};
+    } 
+  }
 }
