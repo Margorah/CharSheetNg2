@@ -138,4 +138,9 @@ $text-input-md-highlight-color: $primary;
             }
         }
     }
+    page-help-slides {
+        .swiper-pagination-progress .swiper-pagination-progressbar {
+            background: $primary;
+        }
+    }
 }

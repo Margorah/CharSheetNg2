@@ -118,4 +118,9 @@ $lightGrey: #F5F5F6;
             }
         }
     }
+    page-help-slides {
+        .swiper-pagination-progress .swiper-pagination-progressbar {
+            background: $primary;
+        }
+    }
 }
