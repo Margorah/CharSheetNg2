@@ -29,4 +29,9 @@ page-help-slides {
             }
         }
     }
+    ion-icon::before {
+        font-size: .9em;
+        padding-left: .05em;
+        padding-right: .05em;
+    }
 }
