@@ -39,4 +39,11 @@ page-character-sheet {
         font-size: inherit;
         text-rendering: auto;
     }
+    ion-reorder {
+        border-bottom: 1px solid;
+        opacity: 1 !important;
+        ion-icon {
+            opacity: .3;
+        }
+    }
 }

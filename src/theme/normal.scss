@@ -117,6 +117,9 @@ $lightGrey: #F5F5F6;
                 color: darken($secondaryTextLight, 30%);
             }
         }
+        ion-reorder {
+            border-color: $lightGrey;
+        }
     }
     page-create-stat {
         .item {
