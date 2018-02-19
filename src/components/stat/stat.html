@@ -1,5 +1,5 @@
 <ion-item-sliding>
-    <button ion-item (click)="selectStat()" class="itemFixer">
+    <ion-item (click)="selectStat()" class="itemFixer">
         <ion-grid class="statWrapper">
             <ion-row col-12 class="stat" [ngClass]="{'visible': getVis()}">
                 <ion-col col-5 class="name">
@@ -9,11 +9,11 @@
                 <ng-template #YES>
                     <ion-col col-3 class="valueWrapper">
                         <span class="value">
-                            {{ stat.value }}
-                        </span>
+                                {{ stat.value }}
+                            </span>
                         <span class="maximum">
-                            {{ stat.maximum }}
-                        </span>
+                                {{ stat.maximum }}
+                            </span>
                     </ion-col>
                     <ion-col col-4 text-right class="type">
                         {{ stat.type }}
@@ -22,28 +22,28 @@
                 <ng-template #NO>
                     <ion-col col-7 text-right class="valueWrapper">
                         <span class="value">
-                            {{ stat.value }}
-                        </span>
+                                {{ stat.value }}
+                            </span>
                         <span class="maximum">
-                            {{ stat.maximum }}
-                        </span>
+                                {{ stat.maximum }}
+                            </span>
                     </ion-col>
                 </ng-template>
             </ion-row>
         </ion-grid>
-    </button>
+    </ion-item>
     <ion-item-options *ngIf="stat.maximum > 0 && stat.value < stat.maximum" side="left">
         <button ion-button (click)="refresh()">
-            <ion-icon name="refresh-circle">                          
-            </ion-icon>
-            Refresh
-        </button>
+                <ion-icon name="refresh-circle">                          
+                </ion-icon>
+                Refresh
+            </button>
     </ion-item-options>
     <ion-item-options side="right">
         <button ion-button (click)="removeStat()">
-            <ion-icon name="trash">
-            </ion-icon>
-            Remove
-        </button>
+                <ion-icon name="trash">
+                </ion-icon>
+                Remove
+            </button>
     </ion-item-options>
 </ion-item-sliding>
