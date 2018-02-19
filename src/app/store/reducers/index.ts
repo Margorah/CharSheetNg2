@@ -5,7 +5,7 @@ import * as fromChars from './character-reducer';
 import * as fromStats from './stat-reducer';
 import * as fromNav from './nav-reducer';
 import * as fromPref from './preferences-reducer';
-import * as fromSync from './sync-reducer';
+// import * as fromSync from './sync-reducer';
 
 // Notes taken from this repo: https://github.com/ngrx/example-app
 
@@ -15,7 +15,7 @@ export interface State {
     stats: fromStats.StatState;
     nav: fromNav.State;
     pref: fromPref.PreferenceState;
-    sync: fromSync.SyncState;
+    // sync: fromSync.SyncState;
 };
 
 export const reducers = {
@@ -24,7 +24,7 @@ export const reducers = {
     stats: fromStats.reducer,
     nav: fromNav.reducer,
     pref: fromPref.reducer,
-    sync: fromSync.reducer
+    // sync: fromSync.reducer
 };
 
 export const getUserState = (state: State) => state.user;
@@ -73,11 +73,11 @@ export const getPrefInterval = createSelector(getPrefState, fromPref.getInterval
 export const getPrefTheme = createSelector(getPrefState, fromPref.getTheme);
 export const getPrefInit = createSelector(getPrefState, fromPref.getInit);
 
-export const getSyncState = (state: State) => state.sync;
+// export const getSyncState = (state: State) => state.sync;
 
-export const getLastSync = createSelector(getSyncState, fromSync.getLastSync);
-export const getCharSync = createSelector(getSyncState, fromSync.getCharSync);
-export const getStatSync = createSelector(getSyncState, fromSync.getStateSync);
+// export const getLastSync = createSelector(getSyncState, fromSync.getLastSync);
+// export const getCharSync = createSelector(getSyncState, fromSync.getCharSync);
+// export const getStatSync = createSelector(getSyncState, fromSync.getStateSync);
 
 export const getNetPref         = createSelector(getPrefMode, getPrefInterval, (mode, interval) => { return { mode, interval }});
 export const getStatMetaCharNetPref = createSelector(getCharacter, getStatMeta, getNetPref, (char, meta, pref) => { return { char, meta, pref } });

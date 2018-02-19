@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'web-animations-js';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 // import { CommonModule } from '@angular/common';
 import { IonicStorageModule } from '@ionic/storage';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 
 // store import
 import { StoreModule } from '@ngrx/store';
@@ -20,7 +20,7 @@ import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 
 import { StorageService } from './services/storage.service';
-import { HttpService } from './services/http.service';
+// import { HttpService } from './services/http.service';
 
 import { AppComponent } from './app.component';
 import { AppMenuComponent } from '../components/app-menu/app-menu';
@@ -58,7 +58,7 @@ import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
       maxAge: 25
     }),
     EffectsModule.forRoot(effects),
-    HttpModule,
+    // HttpModule,
     LoginUserPageModule,
     CreateUserPageModule,
     CharacterListPageModule,
@@ -70,9 +70,9 @@ import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
   ],
   providers: [
     StorageService,
-    HttpService,
+    // HttpService,
     StatusBar,
-    SplashScreen,
+    // SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
   bootstrap: [IonicApp]

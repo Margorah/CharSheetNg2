@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store, Action } from '@ngrx/store';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 
-import { HttpService } from '../../services/http.service';
+// import { HttpService } from '../../services/http.service';
 import { StorageService } from '../../services/storage.service';
 
 import * as CharacterActions from '../actions/character-actions';
@@ -39,18 +39,18 @@ export class CharacterEffects {
             return merge;
         });
 
-    @Effect()
-    createCharNet$: Observable<Action> = this.actions$.ofType(CharacterActions.ADD_NETWORK)
-        // .withLatestFrom(this.store$.select(fromRoot.getLatestChar), (action, char) => char)
-        .map(toPayload)
-        .withLatestFrom(this.store$.select(fromRoot.getAuth), (char, token) => {
-            return {
-                token,
-                char
-            };
-        })
-        .switchMap((payload) => this.http.createCharacter(payload.token, payload.char))
-        .map(() => new CharacterActions.AddNetworkSuccess());
+    // @Effect()
+    // createCharNet$: Observable<Action> = this.actions$.ofType(CharacterActions.ADD_NETWORK)
+    //     // .withLatestFrom(this.store$.select(fromRoot.getLatestChar), (action, char) => char)
+    //     .map(toPayload)
+    //     .withLatestFrom(this.store$.select(fromRoot.getAuth), (char, token) => {
+    //         return {
+    //             token,
+    //             char
+    //         };
+    //     })
+    //     .switchMap((payload) => this.http.createCharacter(payload.token, payload.char))
+    //     .map(() => new CharacterActions.AddNetworkSuccess());
 
     @Effect({dispatch: false})
     saveMany$: Observable<Action> = this.actions$.ofType(CharacterActions.SAVE_MANY)
@@ -98,19 +98,19 @@ export class CharacterEffects {
             return newAction;
         });
 
-    @Effect()
-    loadManyNet$: Observable<Action> = this.actions$.ofType(CharacterActions.LOAD_MANY_NETWORK)
-        .withLatestFrom(this.store$.select(fromRoot.getAuth), (action, token) => token)
-        .switchMap((authToken) => this.http.getCharacters(authToken))
-        .mergeMap((res) => {
-            let merge: Action[] = [
-                new CharacterActions.LoadManyNetworkSuccess(res)                
-            ];
-            if (res.length > 0) {
-                merge.push(new CharacterActions.SaveMany(res))
-            }
-            return merge;
-        });
+    // @Effect()
+    // loadManyNet$: Observable<Action> = this.actions$.ofType(CharacterActions.LOAD_MANY_NETWORK)
+    //     .withLatestFrom(this.store$.select(fromRoot.getAuth), (action, token) => token)
+    //     .switchMap((authToken) => this.http.getCharacters(authToken))
+    //     .mergeMap((res) => {
+    //         let merge: Action[] = [
+    //             new CharacterActions.LoadManyNetworkSuccess(res)                
+    //         ];
+    //         if (res.length > 0) {
+    //             merge.push(new CharacterActions.SaveMany(res))
+    //         }
+    //         return merge;
+    //     });
     
     @Effect()
     remove$ = this.actions$.ofType(CharacterActions.REMOVE)
@@ -163,12 +163,12 @@ export class CharacterEffects {
             return merge;
         });
 
-    @Effect()
-    updateNet$: Observable<Action> = this.actions$.ofType(CharacterActions.UPDATE_NETWORK)
-        .map(toPayload)
-        .withLatestFrom(this.store$.select(fromRoot.getAuth), (char, auth) => {return {char, auth}})
-        .switchMap((meta) => this.http.patchCharacter(meta.auth, meta.char))
-        .map(() => new CharacterActions.UpdateNetworkSuccess());
+    // @Effect()
+    // updateNet$: Observable<Action> = this.actions$.ofType(CharacterActions.UPDATE_NETWORK)
+    //     .map(toPayload)
+    //     .withLatestFrom(this.store$.select(fromRoot.getAuth), (char, auth) => {return {char, auth}})
+    //     .switchMap((meta) => this.http.patchCharacter(meta.auth, meta.char))
+    //     .map(() => new CharacterActions.UpdateNetworkSuccess());
 
     @Effect()
     updateTime$: Observable<Action> = this.actions$.ofType(CharacterActions.UPDATE_TIME)
@@ -194,7 +194,8 @@ export class CharacterEffects {
         });
     
 
-    constructor(private http: HttpService,
+    constructor(
+        // private http: HttpService,
                 private actions$: Actions,
                 private store$: Store<fromRoot.State>,
                 private storage: StorageService) { }
