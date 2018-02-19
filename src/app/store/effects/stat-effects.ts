@@ -66,8 +66,9 @@ export class StatEffects {
             return null;
         });
 
+    // Save effect so should be no need to repeat code
     @Effect({dispatch: false})
-    saveMeta$: Observable<Action> = this.actions$.ofType(StatActions.SAVE)
+    saveMeta$: Observable<Action> = this.actions$.ofType(StatActions.SAVE, StatActions.SELECT, StatActions.UNSELECT, StatActions.REORDER)
         .withLatestFrom(this.store$.select(fromRoot.getStatMetaChar) , (action, payload) => payload)
         .map((state) => {
             this.storage.setStatMetaState(state.char.id, state.meta.ids, state.meta.selectedId);          
@@ -223,21 +224,21 @@ export class StatEffects {
         .switchMap((payload) => this.http.patchCharacterStat(payload.auth, payload.char.id, payload.char.updated, payload.stat))
         .map(() => new StatActions.UpdateNetworkSuccess());
 
-    @Effect({dispatch: false})
-    select$: Observable<Action> = this.actions$.ofType(StatActions.SELECT)
-        .withLatestFrom(this.store$.select(fromRoot.getStatMetaChar), (action, state) => state)
-        .map((state) => {
-            this.storage.setStatMetaState(state.char.id, state.meta.ids, state.meta.selectedId);
-            return null;
-        });
+    // @Effect({dispatch: false})
+    // select$: Observable<Action> = this.actions$.ofType(StatActions.SELECT)
+    //     .withLatestFrom(this.store$.select(fromRoot.getStatMetaChar), (action, state) => state)
+    //     .map((state) => {
+    //         this.storage.setStatMetaState(state.char.id, state.meta.ids, state.meta.selectedId);
+    //         return null;
+    //     });
 
-    @Effect({dispatch: false})
-    unselect$: Observable<Action> = this.actions$.ofType(StatActions.UNSELECT)
-        .withLatestFrom(this.store$.select(fromRoot.getStatMetaChar), (action, state) => state)
-        .map((state) => {
-            this.storage.setStatMetaState(state.char.id, state.meta.ids, state.meta.selectedId);
-            return null;
-        });    
+    // @Effect({dispatch: false})
+    // unselect$: Observable<Action> = this.actions$.ofType(StatActions.UNSELECT)
+    //     .withLatestFrom(this.store$.select(fromRoot.getStatMetaChar), (action, state) => state)
+    //     .map((state) => {
+    //         this.storage.setStatMetaState(state.char.id, state.meta.ids, state.meta.selectedId);
+    //         return null;
+    //     });    
 
     constructor(private http: HttpService,
                 private actions$: Actions,
