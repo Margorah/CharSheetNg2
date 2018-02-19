@@ -29,4 +29,14 @@ page-character-sheet {
             }
         }
     }
+    .ion-ios-customsort,
+    .ion-md-customsort {
+        content: url(../../assets/assets/icon/sort.svg);
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        opacity: 0.8;
+        font-size: inherit;
+        text-rendering: auto;
+    }
 }
