@@ -26,6 +26,7 @@ import { AppComponent } from './app.component';
 import { AppMenuComponent } from '../components/app-menu/app-menu';
 import { SplashscreenComponent } from '../components/splashscreen/splashscreen';
 
+import { AboutPageModule } from '../pages/about/about.module';
 import { LoginUserPageModule } from '../pages/login-user/login-user.module';
 import { CreateUserPageModule } from '../pages/create-user/create-user.module';
 import { CharacterListPageModule } from '../pages/character-list/character-list.module';
@@ -59,6 +60,7 @@ import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
     }),
     EffectsModule.forRoot(effects),
     HttpModule,
+    AboutPageModule,
     LoginUserPageModule,
     CreateUserPageModule,
     CharacterListPageModule,
