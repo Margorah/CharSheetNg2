@@ -17,7 +17,14 @@
     "src/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/app/services/http.service.ts",
+    "src/app/store/actions/user-actions.ts",
+    "src/app/store/reducers/user-reducer.ts",
+    "src/app/store/effects/user-effects.ts",
+    "src/app/store/actions/sync-actions.ts",
+    "src/app/store/reducers/sync-reducer.ts",
+    "src/app/store/effects/sync-effects.ts"
   ],
   "compileOnSave": false,
   "atom": {
