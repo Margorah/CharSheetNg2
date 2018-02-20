@@ -49,9 +49,9 @@ export function reducer(state = initialState, action: CharacterActions.All): Cha
         case CharacterActions.LOAD_MANY_SUCCESS: {
             return genNewCharState(action.payload.chars, action.payload.selected);
         }
-        case CharacterActions.LOAD_MANY_NETWORK_SUCCESS: {
-            return genNewCharState(action.payload);
-        }
+        // case CharacterActions.LOAD_MANY_NETWORK_SUCCESS: {
+        //     return genNewCharState(action.payload);
+        // }
         case CharacterActions.REMOVE: {
             const toRemoveId = action.payload;
             const selectedCharId = (toRemoveId === state.selectedCharId) ? null : state.selectedCharId;
@@ -62,7 +62,7 @@ export function reducer(state = initialState, action: CharacterActions.All): Cha
                 selectedCharId: selectedCharId
             };
         }
-        case CharacterActions.LOGOUT:
+        // case CharacterActions.LOGOUT:
         case CharacterActions.REMOVE_ALL: {
             return initialState;
         }
@@ -93,9 +93,9 @@ export function reducer(state = initialState, action: CharacterActions.All): Cha
             };
         }
         // case CharacterActions.ADD_ERROR:
-        case CharacterActions.ADD_NETWORK:
-        case CharacterActions.ADD_NETWORK_SUCCESS:
-        case CharacterActions.ADD_NETWORK_ERROR:
+        // case CharacterActions.ADD_NETWORK:
+        // case CharacterActions.ADD_NETWORK_SUCCESS:
+        // case CharacterActions.ADD_NETWORK_ERROR:
         case CharacterActions.SAVE:
         case CharacterActions.SAVE_ERROR:
         case CharacterActions.SAVE_META:
@@ -103,22 +103,22 @@ export function reducer(state = initialState, action: CharacterActions.All): Cha
         case CharacterActions.SAVE_MANY:
         case CharacterActions.SAVE_MANY_ERROR:
         case CharacterActions.LOAD_MANY:
-        case CharacterActions.LOAD_MANY_ERROR:
-        case CharacterActions.LOAD_MANY_NETWORK:
-        case CharacterActions.LOAD_MANY_NETWORK_ERROR:
+        // case CharacterActions.LOAD_MANY_ERROR:
+        // case CharacterActions.LOAD_MANY_NETWORK:
+        // case CharacterActions.LOAD_MANY_NETWORK_ERROR:
         case CharacterActions.LOAD_MANY_NONE:
         // case CharacterActions.REMOVE_ERROR:
-        case CharacterActions.REMOVE_NETWORK:
-        case CharacterActions.REMOVE_NETWORK_SUCCESS:
-        case CharacterActions.REMOVE_NETWORK_ERROR:
+        // case CharacterActions.REMOVE_NETWORK:
+        // case CharacterActions.REMOVE_NETWORK_SUCCESS:
+        // case CharacterActions.REMOVE_NETWORK_ERROR:
         // case CharacterActions.REMOVE_ALL_ERROR:
-        case CharacterActions.REMOVE_ALL_NETWORK:
-        case CharacterActions.REMOVE_ALL_NETWORK_SUCCESS:
-        case CharacterActions.REMOVE_ALL_NETWORK_ERROR:
+        // case CharacterActions.REMOVE_ALL_NETWORK:
+        // case CharacterActions.REMOVE_ALL_NETWORK_SUCCESS:
+        // case CharacterActions.REMOVE_ALL_NETWORK_ERROR:
         // case CharacterActions.UPDATE_ERROR:
-        case CharacterActions.UPDATE_NETWORK:
-        case CharacterActions.UPDATE_NETWORK_SUCCESS:
-        case CharacterActions.UPDATE_NETWORK_ERROR:
+        // case CharacterActions.UPDATE_NETWORK:
+        // case CharacterActions.UPDATE_NETWORK_SUCCESS:
+        // case CharacterActions.UPDATE_NETWORK_ERROR:
         case CharacterActions.SELECT_ERROR:
         default:
             return state;

@@ -31,9 +31,9 @@ export class CharacterEffects {
             ];
             // Check for Error and dispatch here?
             // TODO: CHECK TIMER IS UP?
-            if (meta.prefstate.mode === PREFERENCES.MODE.ONLINE) {
-               merge.push(new CharacterActions.AddNetwork(meta.char));
-            }
+            // if (meta.prefstate.mode === PREFERENCES.MODE.ONLINE) {
+            //    merge.push(new CharacterActions.AddNetwork(meta.char));
+            // }
             
             merge.push(new NavActions.Back());
             return merge;
@@ -78,7 +78,7 @@ export class CharacterEffects {
             // if (meta.charState === null && meta.prefState.mode === PREFERENCES.MODE.ONLINE) {
             if (meta.prefState.mode === PREFERENCES.MODE.ONLINE) {                   
                 // ONLINE MODE. CHECK FOR UPDATES HERE?
-                newAction.push(new CharacterActions.LoadManyNetwork());
+                // newAction.push(new CharacterActions.LoadManyNetwork());
                 newAction.push(new NavActions.CharacterList());
             // } else if (meta.charState !== null) {
             } else {              
@@ -157,9 +157,9 @@ export class CharacterEffects {
             let merge: Action[] = [
                 new CharacterActions.Save(meta.char)
             ];
-            if (meta.prefstate.mode === PREFERENCES.MODE.ONLINE) {
-                merge.push(new CharacterActions.UpdateNetwork(meta.char));
-            }
+            // if (meta.prefstate.mode === PREFERENCES.MODE.ONLINE) {
+            //     merge.push(new CharacterActions.UpdateNetwork(meta.char));
+            // }
             return merge;
         });
 
