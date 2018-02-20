@@ -36,9 +36,9 @@ export class StatEffects {
             ];
             // Check for Error and dispatch here?
             // TODO: CHECK TIMER UP?
-            if (meta.pref.mode === PREFERENCES.MODE.ONLINE) {
-                merge.push(new StatActions.AddNetwork({stat: meta.state.stat, char: meta.state.char}));
-            }
+            // if (meta.pref.mode === PREFERENCES.MODE.ONLINE) {
+            //     merge.push(new StatActions.AddNetwork({stat: meta.state.stat, char: meta.state.char}));
+            // }
 
             merge.push(new NavActions.Back());
             return merge;
@@ -99,7 +99,7 @@ export class StatEffects {
 
             if (meta.pref.mode === PREFERENCES.MODE.ONLINE) {
                 // Check For newer here
-                newAction.push(new StatActions.LoadManyNetwork());
+                // newAction.push(new StatActions.LoadManyNetwork());
             } else {
                 if (meta.stat !== null) {
                     newAction.push(new StatActions.LoadManySuccess(meta.stat));                   
@@ -162,9 +162,9 @@ export class StatEffects {
                 new CharacterActions.UpdateTime(char)
             ];
             //TODO: CHECK TIMER?
-            if (payload.pref.mode === PREFERENCES.MODE.ONLINE) {
-                merge.push(new StatActions.RemoveNetwork(payload.statId));
-            }
+            // if (payload.pref.mode === PREFERENCES.MODE.ONLINE) {
+            //     merge.push(new StatActions.RemoveNetwork(payload.statId));
+            // }
             return merge;
         });
 
@@ -202,9 +202,9 @@ export class StatEffects {
             ];
 
             //TODO: CHECK TIMER?
-            if (state.pref.mode === PREFERENCES.MODE.ONLINE) {
-                merge.push(new StatActions.UpdateNetwork(state.stat));
-            }
+            // if (state.pref.mode === PREFERENCES.MODE.ONLINE) {
+            //     merge.push(new StatActions.UpdateNetwork(state.stat));
+            // }
             return merge;
         });
 
