@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import * as fromUser from './user-reducer';
+// import * as fromUser from './user-reducer';
 import * as fromChars from './character-reducer';
 import * as fromStats from './stat-reducer';
 import * as fromNav from './nav-reducer';
@@ -10,7 +10,7 @@ import * as fromPref from './preferences-reducer';
 // Notes taken from this repo: https://github.com/ngrx/example-app
 
 export interface State {
-    user: fromUser.UserState;
+    // user: fromUser.UserState;
     characters: fromChars.CharacterState;
     stats: fromStats.StatState;
     nav: fromNav.State;
@@ -19,7 +19,7 @@ export interface State {
 };
 
 export const reducers = {
-    user: fromUser.reducer,
+    // user: fromUser.reducer,
     characters: fromChars.reducer,
     stats: fromStats.reducer,
     nav: fromNav.reducer,
@@ -27,13 +27,13 @@ export const reducers = {
     // sync: fromSync.reducer
 };
 
-export const getUserState = (state: State) => state.user;
+// export const getUserState = (state: State) => state.user;
 
-export const getAuth        = createSelector(getUserState, fromUser.getAuth);
-export const getUsername    = createSelector(getUserState, fromUser.getUsername);
-export const getEmail       = createSelector(getUserState, fromUser.getEmail);
-export const getUserId      = createSelector(getUserState, fromUser.getUserId);
-export const getUser        = createSelector(getUserState, fromUser.getUser);
+// export const getAuth        = createSelector(getUserState, fromUser.getAuth);
+// export const getUsername    = createSelector(getUserState, fromUser.getUsername);
+// export const getEmail       = createSelector(getUserState, fromUser.getEmail);
+// export const getUserId      = createSelector(getUserState, fromUser.getUserId);
+// export const getUser        = createSelector(getUserState, fromUser.getUser);
 
 export const getCharState = (state: State) => state.characters;
 
@@ -81,7 +81,7 @@ export const getPrefInit = createSelector(getPrefState, fromPref.getInit);
 
 export const getNetPref         = createSelector(getPrefMode, getPrefInterval, (mode, interval) => { return { mode, interval }});
 export const getStatMetaCharNetPref = createSelector(getCharacter, getStatMeta, getNetPref, (char, meta, pref) => { return { char, meta, pref } });
-export const getCharAuth        = createSelector(getAuth, getCharacter, (auth, char) => { return { auth, char }});
-export const getUsernameAndChar = createSelector(getUsername, getCharacter, (user, char) => { return { user, char }});
-export const getStatToRemove    =
-    createSelector(getAuth, getCharacterId, getStat, (auth, char, stat) => { return { auth, char, stat} });
+// export const getCharAuth        = createSelector(getAuth, getCharacter, (auth, char) => { return { auth, char }});
+// export const getUsernameAndChar = createSelector(getUsername, getCharacter, (user, char) => { return { user, char }});
+// export const getStatToRemove    =
+//     createSelector(getAuth, getCharacterId, getStat, (auth, char, stat) => { return { auth, char, stat} });
