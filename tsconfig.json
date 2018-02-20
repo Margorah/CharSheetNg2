@@ -24,7 +24,9 @@
     "src/app/store/effects/user-effects.ts",
     "src/app/store/actions/sync-actions.ts",
     "src/app/store/reducers/sync-reducer.ts",
-    "src/app/store/effects/sync-effects.ts"
+    "src/app/store/effects/sync-effects.ts",
+    "src/pages/create-user",
+    "src/pages/login-user"
   ],
   "compileOnSave": false,
   "atom": {
