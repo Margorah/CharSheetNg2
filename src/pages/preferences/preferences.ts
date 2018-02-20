@@ -11,13 +11,6 @@ import * as PrefActions from '../../app/store/actions/preferences-actions';
 
 import * as PREFERENCES from '../../app/models/preferences-model';
 
-/**
- * Generated class for the PreferencesPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-preferences',
@@ -41,7 +34,7 @@ export class PreferencesPage {
   }
 
   ngOnInit() {
-    this.user = this.store.select(fromRoot.getUsername);
+    // this.user = this.store.select(fromRoot.getUsername);
     this.mode = this.store.select(fromRoot.getPrefMode);
     this.themeSub = this.store.select(fromRoot.getPrefTheme).subscribe((value) => {
       this.themeVal = value;
