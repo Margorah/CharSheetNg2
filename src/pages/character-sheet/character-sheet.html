@@ -7,6 +7,10 @@
             </button>
             <ion-title>{{ ( character | async )?.name }}</ion-title>
             <ion-buttons end>
+                <button ion-button icon-only (click)="toggleReorder()">
+                    <ion-icon name="customsort">
+                    </ion-icon>
+                </button>
                 <button ion-button icon-only (click)="createStat()">
                     <ion-icon name="add">
                     </ion-icon>
@@ -37,8 +41,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-list class="listFixer">
-        <!-- <stat *ngFor="let stat of (stats | async); let i = index" [stat]="stat" [index]="i"></stat> -->
+    <ion-list class="listFixer" [reorder]="reorderState" (ionItemReorder)="reorderItems($event)">
         <ng-template #statsContainer></ng-template>
     </ion-list>
 </ion-content>

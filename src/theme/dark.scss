@@ -137,6 +137,21 @@ $text-input-md-highlight-color: $primary;
                 color: darken($secondaryTextLight, 30%);
             }
         }
+        ion-reorder {
+            border-color: $dividers;
+        }
+    }
+    page-create-stat {
+        .item {
+            .propertyToggle {
+                background-color: $primaryDark;
+            }
+        }
+        .item-divider {
+            .propertyToggle {
+                background-color: $primary;
+            }
+        }
     }
     page-help-slides {
         .swiper-pagination-progress .swiper-pagination-progressbar {

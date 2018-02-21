@@ -13,7 +13,8 @@ import * as PREFERENCES from '../../models/preferences-model';
 
 import * as PrefActions from '../actions/preferences-actions';
 import * as NavActions from '../actions/nav-actions';
-import * as UserActions from '../actions/user-actions';
+// import * as UserActions from '../actions/user-actions';
+import * as CharActions from '../actions/character-actions';
 import * as fromRoot from '../reducers';
 
 @Injectable()
@@ -33,7 +34,9 @@ export class PreferencesEffects {
                 newActions.push(new NavActions.HelpSlides());
             } else {
                 newActions.push(new PrefActions.LoadSuccess(state.storage));
-                newActions.push(new UserActions.Load());                                                  
+                // newActions.push(new UserActions.Load());
+                // Circumvent UserAction and then call what it use to call
+                newActions.push(new CharActions.LoadMany());
             }
             return newActions;
         });

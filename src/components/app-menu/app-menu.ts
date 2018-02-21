@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../app/store/reducers';
-import * as UserActions from '../../app/store/actions/user-actions';
+// import * as UserActions from '../../app/store/actions/user-actions';
 import * as NavActions from '../../app/store/actions/nav-actions';
 
 import * as PREFERENCES from '../../app/models/preferences-model';
@@ -15,7 +15,8 @@ import * as PREFERENCES from '../../app/models/preferences-model';
 })
 export class AppMenuComponent {
   @Input() content;
-  private user: Observable<string>;
+  // private user: Observable<string>;
+  private menuTitle = 'Menu';
   private mode: Observable<string>;
   private templateModeTestVar = PREFERENCES.MODE.ONLINE;
   private templateNameTestVar = '';
@@ -23,21 +24,21 @@ export class AppMenuComponent {
   constructor(private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
-    this.user = this.store.select(fromRoot.getUsername);
+    // this.user = this.store.select(fromRoot.getUsername);
     this.mode = this.store.select(fromRoot.getPrefMode);
   }
 
-  logout() {
-    this.store.dispatch(new UserActions.Logout());
-  }
+  // logout() {
+  //   this.store.dispatch(new UserActions.Logout());
+  // }
 
-  createUser() {
-    this.store.dispatch(new NavActions.CreateUser());
-  }
+  // createUser() {
+  //   this.store.dispatch(new NavActions.CreateUser());
+  // }
 
-  login() {
-    this.store.dispatch(new NavActions.Login());
-  }
+  // login() {
+  //   this.store.dispatch(new NavActions.Login());
+  // }
 
   charList() {
     this.store.dispatch(new NavActions.CharacterList());

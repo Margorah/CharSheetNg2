@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { CharacterStat } from '../../app/models/stat-model';
 import * as fromRoot from '../../app/store/reducers';
 import * as StatActions from '../../app/store/actions/stat-actions';
-// import { CharacterSheet } from '../../app/store/actions/nav-actions';
+import * as buttonUtils from '../../app/utilities/functions';
 
 @Component({
   selector: 'stat-form-change',
@@ -40,8 +40,8 @@ export class StatFormChangeComponent {
 
   formChange(stat: CharacterStat, type: string, evt: Event) {
     evt.preventDefault();
-    let newValue;
-    let subNum = this.editStatForm.get('value').value;
+    let newValue: number;
+    let subNum = +this.editStatForm.get('value').value;
 
     if (type === 'PLUS') {
       newValue = stat.value + subNum;      
@@ -57,6 +57,14 @@ export class StatFormChangeComponent {
 
     this.store.dispatch(new StatActions.Update({id: stat.id, name: stat.name, value: newValue, maximum: stat.maximum, type: stat.type, component: stat.component}));    
     this.formValue.setValue('');
+  }
+
+  showPlus(statMaximum: number, currentVal: number): boolean {
+    return buttonUtils.showPlus(statMaximum, currentVal);
+  }
+
+  showMinus(statMaximum: number, currentVal: number): boolean {
+    return buttonUtils.showMinus(statMaximum, currentVal);
   }
 
 }

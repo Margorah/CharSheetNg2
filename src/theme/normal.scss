@@ -117,6 +117,21 @@ $lightGrey: #F5F5F6;
                 color: darken($secondaryTextLight, 30%);
             }
         }
+        ion-reorder {
+            border-color: $lightGrey;
+        }
+    }
+    page-create-stat {
+        .item {
+            .propertyToggle {
+                background-color: $primaryDark;
+            }
+        }
+        .item-divider {
+            .propertyToggle {
+                background-color: $primary;
+            }
+        }
     }
     page-help-slides {
         .swiper-pagination-progress .swiper-pagination-progressbar {

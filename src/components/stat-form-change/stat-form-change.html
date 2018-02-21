@@ -3,17 +3,17 @@
         <div>
             <ion-row>
                 <ion-col col-2>
-                    <button (click)="formChange(stat, 'MINUS', $event)" ion-button icon-only clear>
-              <ion-icon name="remove"></ion-icon>
-          </button>
+                    <button *ngIf="showMinus(stat.maximum, stat.value)" (click)="formChange(stat, 'MINUS', $event)" ion-button icon-only clear>
+                        <ion-icon name="remove"></ion-icon>
+                    </button>
                 </ion-col>
                 <ion-col col-8 class="formEditInput">
                     <input type="number" placeholder="Change {{stat.value}} by" formControlName="value" #inputFocus/>
                 </ion-col>
                 <ion-col col-2>
-                    <button (click)="formChange(stat, 'PLUS', $event)" ion-button icon-only clear>
-              <ion-icon name="add" ></ion-icon>
-          </button>
+                    <button *ngIf="showPlus(stat.maximum, stat.value)" (click)="formChange(stat, 'PLUS', $event)" ion-button icon-only clear>
+                        <ion-icon name="add" ></ion-icon>
+                    </button>
                 </ion-col>
             </ion-row>
         </div>
