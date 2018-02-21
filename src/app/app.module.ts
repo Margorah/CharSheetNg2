@@ -46,7 +46,10 @@ import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(AppComponent),
+    IonicModule.forRoot(AppComponent, {
+      scrollPadding: false,
+      scrollAssist: false
+    }),
     IonicStorageModule.forRoot({
       name: 'charSheetIonicDB',
       // driverOrder: ['localstorage', 'sqlite', 'indexeddb']

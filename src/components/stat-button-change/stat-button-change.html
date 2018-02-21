@@ -2,7 +2,7 @@
     <ion-list-header>
         <ion-row>
             <ion-col col-2>
-                <button *ngIf="rangeValue > 0" (click)="rangeClick(stat, 'MINUS')" ion-button icon-only clear>
+                <button *ngIf="showMinus(stat.maximum, rangeValue)" (click)="rangeClick(stat, 'MINUS')" ion-button icon-only clear>
           <ion-icon name="remove" ></ion-icon>
       </button>
             </ion-col>
@@ -10,7 +10,7 @@
                 {{ rangeValue }}
             </ion-col>
             <ion-col col-2>
-                <button *ngIf="rangeValue < stat.maximum" (click)="rangeClick(stat, 'PLUS')" ion-button icon-only clear>
+                <button *ngIf="showPlus(stat.maximum, rangeValue)" (click)="rangeClick(stat, 'PLUS')" ion-button icon-only clear>
               <ion-icon name="add"></ion-icon>
           </button>
             </ion-col>

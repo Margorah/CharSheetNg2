@@ -25,7 +25,6 @@ import * as PrefActions from '../../app/store/actions/preferences-actions';
 @Component({
   selector: 'page-character-sheet',
   templateUrl: 'character-sheet.html',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('charTitle', [
       state('in',
@@ -73,6 +72,7 @@ export class CharacterSheetPage {
   // private stats: Observable<CharacterStat[]>;
   private currId: string | null;
   private currRngVal  = 0;
+  private reorderState = false;
 
   private currSub: Subscription;
   private statsSub: Subscription;
@@ -121,7 +121,6 @@ export class CharacterSheetPage {
       this.rngValSub.unsubscribe();
     }
     this.container.clear();
-    // console.log('BUILD COMPONENT');
     statsList.forEach((stat, index) => {
       if (stat.id !== this.currId) {
         const componentFactory = this.compFactRes.resolveComponentFactory(StatComponent);
@@ -158,4 +157,18 @@ export class CharacterSheetPage {
     this.statsSub.unsubscribe();
   }
 
+  toggleReorder() {
+    this.reorderState = !this.reorderState;
+  }
+
+  reorderItems(indexes) {
+    this.reorderState = false;
+    this.store.dispatch(new StatActions.Reorder({from: indexes.from, to: indexes.to}));
+  }
+
+  // To get Item Reorder to work I had to change node_module/ionic-angular/components/item/item-reorder-utils.js
+  //  Line 25
+  //    Original :  while (node && nested < 4) {
+  //    Changed  :  while (node && nested < 5) {
+  
 }

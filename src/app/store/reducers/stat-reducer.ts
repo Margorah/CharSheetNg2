@@ -79,6 +79,21 @@ export function reducer(state = initialState, action: StatActions.All): StatStat
                 selectedStatId: null
             };
         }
+        case StatActions.REORDER: {
+            const to = action.payload.to;
+            const from = action.payload.from;
+            const movedId = state.ids[from];
+            const newIds = state.ids.slice(0);
+
+            newIds.splice(from, 1);
+            newIds.splice(to, 0, movedId);
+
+            return {
+                ids: [...newIds],
+                entities: Object.assign({}, state.entities),
+                selectedStatId: state.selectedStatId
+            };
+        }
         case StatActions.SELECT: {
             const newSelectId = state.ids[action.payload];
 

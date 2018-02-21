@@ -45,6 +45,7 @@ export const UPDATE                     = '[Character-Stat] Update';
 // export const UPDATE_NETWORK_SUCCESS     = '[Character-Stat] Update Network Success';
 // export const UPDATE_NETWORK_ERROR       = '[Character-Stat] Update Network Error';
 
+export const REORDER                    = '[Character-Stat] Reorder';
 //Add Update All Network?
 
 export const SELECT                     = '[Character-Stat] Select';
@@ -255,6 +256,12 @@ export class Update implements Action {
 //     constructor() { }
 // };
 
+export class Reorder implements Action {
+    readonly type = REORDER;
+
+    constructor(public payload:{from: number, to: number}) { }
+}
+
 export class Select implements Action {
     readonly type = SELECT;
 
@@ -293,6 +300,7 @@ export type All
     // | LoadManyNetworkSuccess
     // | LoadManyNetworkError
     // | Logout
+    | Reorder
     | Remove
     // | RemoveError
     // | RemoveNetwork

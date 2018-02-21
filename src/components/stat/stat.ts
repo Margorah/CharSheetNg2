@@ -37,13 +37,17 @@ export class StatComponent {
       }));
   }
 
-  getVis(value: number, maximum: number) {
-    if (maximum < 1) {
+  getVis() {
+    if (this.stat.maximum < 1) {
       return false;
-    } else if (value >= maximum) {
+    } else if (this.stat.value >= this.stat.maximum) {
       return false;
     } else {
       return true;
     }
+  }
+
+  displayType(): boolean {
+    return this.stat.type === 'NOTYPE' ? false : true;
   }
 }
