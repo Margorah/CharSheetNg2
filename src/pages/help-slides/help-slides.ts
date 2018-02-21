@@ -7,7 +7,8 @@ import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../app/store/reducers';
 import * as NavActions from '../../app/store/actions/nav-actions';
-import * as UserActions from '../../app/store/actions/user-actions';
+// import * as UserActions from '../../app/store/actions/user-actions';
+import * as CharActions from '../../app/store/actions/character-actions';
 import * as PrefActions from '../../app/store/actions/preferences-actions';
 
 @IonicPage()
@@ -55,7 +56,8 @@ export class HelpSlidesPage {
       this.store.dispatch(new NavActions.Back());
     } else {
       this.store.dispatch(new PrefActions.ChangeInit(true));
-      this.store.dispatch(new UserActions.Load()); 
+      // this.store.dispatch(new UserActions.Load()); 
+      this.store.dispatch(new CharActions.LoadMany());
     }
   }
 

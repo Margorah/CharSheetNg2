@@ -18,20 +18,20 @@ const initialState: State = {
 
 export function reducer(state =  initialState, action: NavActions.All): State {
     switch(action.type) {
-        case NavActions.LOGIN: {
-            return {
-                pages: state.pages,
-                root: state.root,
-                stack: 'login'
-            };
-        };
-        case NavActions.CREATE_USER: {
-            return {
-                pages: state.pages,
-                root: state.root,
-                stack: 'createUser'
-            };
-        };
+        // case NavActions.LOGIN: {
+        //     return {
+        //         pages: state.pages,
+        //         root: state.root,
+        //         stack: 'login'
+        //     };
+        // };
+        // case NavActions.CREATE_USER: {
+        //     return {
+        //         pages: state.pages,
+        //         root: state.root,
+        //         stack: 'createUser'
+        //     };
+        // };
         case NavActions.CHARACTER_LIST: {
             return {
                 pages: state.pages,
