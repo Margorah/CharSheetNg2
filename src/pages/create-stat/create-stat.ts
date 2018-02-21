@@ -130,7 +130,7 @@ export class CreateStatPage {
   valueAboveBounds(group: FormGroup): {[s: string]: boolean} {
     const ctrlValue = group.get('value');
     const ctrlMaximum = group.get('maximum');
-    if (this.statHasAMax == true && ctrlValue.value > ctrlMaximum.value) {
+    if (this.statHasAMax == true && +ctrlValue.value > +ctrlMaximum.value) {
       return {'valueAboveMax': true}
     }
   }
@@ -138,7 +138,7 @@ export class CreateStatPage {
   valueBelowBounds(group: FormGroup): {[s: string]: boolean} {
     const ctrlValue = group.get('value');
     const ctrlMaximum = group.get('maximum');
-    if (this.statHasAMax == true && ctrlValue.value < 0) {
+    if (this.statHasAMax == true && +ctrlValue.value < 0) {
       return {'valueBelowZero': true};
     } 
   }
