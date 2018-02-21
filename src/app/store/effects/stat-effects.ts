@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store, Action } from '@ngrx/store';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 
-import { HttpService } from '../../services/http.service';
+// import { HttpService } from '../../services/http.service';
 import { StorageService } from '../../services/storage.service';
 
 import * as StatActions from '../actions/stat-actions';
@@ -28,35 +28,34 @@ export class StatEffects {
         .withLatestFrom(this.store$.select(fromRoot.getNetPref), (state, pref) => {return {state, pref}})    
         .mergeMap((meta)  => {
             meta.state.char.updated = Date.now();
-            console.log(meta.state.stat);
+
             let merge: Action[] = [
                 new StatActions.Save(meta.state.stat),
                 new StatActions.SaveMeta(),
                 new CharacterActions.UpdateTime(meta.state.char),
-                // new CharacterActions.SaveMeta()
             ];
             // Check for Error and dispatch here?
             // TODO: CHECK TIMER UP?
-            if (meta.pref.mode === PREFERENCES.MODE.ONLINE) {
-                merge.push(new StatActions.AddNetwork({stat: meta.state.stat, char: meta.state.char}));
-            }
+            // if (meta.pref.mode === PREFERENCES.MODE.ONLINE) {
+            //     merge.push(new StatActions.AddNetwork({stat: meta.state.stat, char: meta.state.char}));
+            // }
 
             merge.push(new NavActions.Back());
             return merge;
         });
 
-    @Effect()
-    addNetwork$: Observable<Action> = this.actions$.ofType(StatActions.ADD_NETWORK)
-        .map(toPayload)
-        .withLatestFrom(this.store$.select(fromRoot.getAuth), (payload, token) => {
-            return {
-                auth: token,
-                char: payload.char,
-                stat: payload.stat
-            };            
-        })
-        .switchMap((result) => this.http.createCharacterStat(result.auth, result.char, result.stat))
-        .map((stat) => new StatActions.AddNetworkSuccess());
+    // @Effect()
+    // addNetwork$: Observable<Action> = this.actions$.ofType(StatActions.ADD_NETWORK)
+    //     .map(toPayload)
+    //     .withLatestFrom(this.store$.select(fromRoot.getAuth), (payload, token) => {
+    //         return {
+    //             auth: token,
+    //             char: payload.char,
+    //             stat: payload.stat
+    //         };            
+    //     })
+    //     .switchMap((result) => this.http.createCharacterStat(result.auth, result.char, result.stat))
+    //     .map((stat) => new StatActions.AddNetworkSuccess());
 
     @Effect({dispatch: false})
     save$: Observable<Action> = this.actions$.ofType(StatActions.SAVE)
@@ -101,7 +100,7 @@ export class StatEffects {
 
             if (meta.pref.mode === PREFERENCES.MODE.ONLINE) {
                 // Check For newer here
-                newAction.push(new StatActions.LoadManyNetwork());
+                // newAction.push(new StatActions.LoadManyNetwork());
             } else {
                 if (meta.stat !== null) {
                     newAction.push(new StatActions.LoadManySuccess(meta.stat));                   
@@ -114,20 +113,20 @@ export class StatEffects {
             return newAction;
         });
 
-    @Effect()
-    loadManyNet$: Observable<Action> = this.actions$.ofType(StatActions.LOAD_MANY_NETWORK)
-        .withLatestFrom(this.store$.select(fromRoot.getCharAuth), (action, payload) => payload)
-        .switchMap((payload) => this.http.getCharacterStats(payload.auth, payload.char.id))
-        .mergeMap((result) =>  {
-            let merge: Action[] = [
-                new StatActions.LoadManyNetworkSuccess(result)
-            ];
-            if (result.length > 0 ) {
-                merge.push(new StatActions.SaveMany(result))
-            }
-            return merge;
-            // Save Dispatched Here?
-        });
+    // @Effect()
+    // loadManyNet$: Observable<Action> = this.actions$.ofType(StatActions.LOAD_MANY_NETWORK)
+    //     .withLatestFrom(this.store$.select(fromRoot.getCharAuth), (action, payload) => payload)
+    //     .switchMap((payload) => this.http.getCharacterStats(payload.auth, payload.char.id))
+    //     .mergeMap((result) =>  {
+    //         let merge: Action[] = [
+    //             new StatActions.LoadManyNetworkSuccess(result)
+    //         ];
+    //         if (result.length > 0 ) {
+    //             merge.push(new StatActions.SaveMany(result))
+    //         }
+    //         return merge;
+    //         // Save Dispatched Here?
+    //     });
     
     @Effect({dispatch: false})
     removeAll$: Observable<Action> = this.actions$.ofType(StatActions.REMOVE_ALL)
@@ -137,12 +136,12 @@ export class StatEffects {
             return null;
         });
 
-    @Effect()
-    removeAllNet$: Observable<Action> = this.actions$.ofType(StatActions.REMOVE_ALL_NETWORK)
-        .withLatestFrom(this.store$.select(fromRoot.getCharAuth), (action, payload) => payload)
-        // Need to Add Delete All Character Stats
-        .switchMap((payload) => this.http.deleteCharacterStats(payload.auth, payload.char.id))
-        .map((res) => new StatActions.RemoveAllNetworkSuccess());
+    // @Effect()
+    // removeAllNet$: Observable<Action> = this.actions$.ofType(StatActions.REMOVE_ALL_NETWORK)
+    //     .withLatestFrom(this.store$.select(fromRoot.getCharAuth), (action, payload) => payload)
+    //     // Need to Add Delete All Character Stats
+    //     .switchMap((payload) => this.http.deleteCharacterStats(payload.auth, payload.char.id))
+    //     .map((res) => new StatActions.RemoveAllNetworkSuccess());
 
     @Effect()
     remove$: Observable<Action> = this.actions$.ofType(StatActions.REMOVE)
@@ -164,24 +163,24 @@ export class StatEffects {
                 new CharacterActions.UpdateTime(char)
             ];
             //TODO: CHECK TIMER?
-            if (payload.pref.mode === PREFERENCES.MODE.ONLINE) {
-                merge.push(new StatActions.RemoveNetwork(payload.statId));
-            }
+            // if (payload.pref.mode === PREFERENCES.MODE.ONLINE) {
+            //     merge.push(new StatActions.RemoveNetwork(payload.statId));
+            // }
             return merge;
         });
 
-    @Effect()
-    removeNet$: Observable<Action> = this.actions$.ofType(StatActions.REMOVE_NETWORK)
-        .map(toPayload)
-        .withLatestFrom(this.store$.select(fromRoot.getCharAuth), (payload, charAuth) => {
-            return {
-                auth: charAuth.auth,
-                charId: charAuth.char.id,
-                statId: payload
-            };        
-        })
-        .switchMap((payload) => this.http.deleteCharacterStat(payload.auth, payload.charId, payload.statId))
-        .map((res) => new StatActions.RemoveNetworkSuccess());  
+    // @Effect()
+    // removeNet$: Observable<Action> = this.actions$.ofType(StatActions.REMOVE_NETWORK)
+    //     .map(toPayload)
+    //     .withLatestFrom(this.store$.select(fromRoot.getCharAuth), (payload, charAuth) => {
+    //         return {
+    //             auth: charAuth.auth,
+    //             charId: charAuth.char.id,
+    //             statId: payload
+    //         };        
+    //     })
+    //     .switchMap((payload) => this.http.deleteCharacterStat(payload.auth, payload.charId, payload.statId))
+    //     .map((res) => new StatActions.RemoveNetworkSuccess());  
   
     @Effect()
     update$: Observable<Action> = this.actions$.ofType(StatActions.UPDATE)
@@ -199,30 +198,29 @@ export class StatEffects {
             char.updated = Date.now()
             let merge: Action[] = [
                 new CharacterActions.UpdateTime(char),
-                new StatActions.Save(state.stat),
-                new StatActions.SaveMeta()
+                new StatActions.Save(state.stat)
+                // new StatActions.SaveMeta()  // because update does not change state.ids or state.selected meta does not need to be saved
             ];
-            // this.storage.setStat(state.stat)
-            // this.storage.setStatMetaState(state.charId, state.meta.ids, state.meta.selectedId);
+
             //TODO: CHECK TIMER?
-            if (state.pref.mode === PREFERENCES.MODE.ONLINE) {
-                merge.push(new StatActions.UpdateNetwork(state.stat));
-            }
+            // if (state.pref.mode === PREFERENCES.MODE.ONLINE) {
+            //     merge.push(new StatActions.UpdateNetwork(state.stat));
+            // }
             return merge;
         });
 
-    @Effect()
-    updateNet$: Observable<Action> = this.actions$.ofType(StatActions.UPDATE_NETWORK)
-        .map(toPayload)
-        .withLatestFrom(this.store$.select(fromRoot.getCharAuth), (payload, charAuth) => {
-            return {
-                auth: charAuth.auth,
-                char: charAuth.char,
-                stat: payload
-            };
-        })
-        .switchMap((payload) => this.http.patchCharacterStat(payload.auth, payload.char.id, payload.char.updated, payload.stat))
-        .map(() => new StatActions.UpdateNetworkSuccess());
+    // @Effect()
+    // updateNet$: Observable<Action> = this.actions$.ofType(StatActions.UPDATE_NETWORK)
+    //     .map(toPayload)
+    //     .withLatestFrom(this.store$.select(fromRoot.getCharAuth), (payload, charAuth) => {
+    //         return {
+    //             auth: charAuth.auth,
+    //             char: charAuth.char,
+    //             stat: payload
+    //         };
+    //     })
+    //     .switchMap((payload) => this.http.patchCharacterStat(payload.auth, payload.char.id, payload.char.updated, payload.stat))
+    //     .map(() => new StatActions.UpdateNetworkSuccess());
 
     // @Effect({dispatch: false})
     // select$: Observable<Action> = this.actions$.ofType(StatActions.SELECT)
@@ -240,7 +238,8 @@ export class StatEffects {
     //         return null;
     //     });    
 
-    constructor(private http: HttpService,
+    constructor(
+        // private http: HttpService,
                 private actions$: Actions,
                 private store$: Store<fromRoot.State>,
                 private storage: StorageService) { }
