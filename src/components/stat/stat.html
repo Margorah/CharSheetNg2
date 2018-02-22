@@ -32,18 +32,16 @@
             </ion-row>
         </ion-grid>
     </ion-item>
-    <ion-item-options *ngIf="stat.maximum > 0 && stat.value < stat.maximum" side="left">
-        <button ion-button (click)="refresh()">
+    <ion-item-options *ngIf="stat.maximum > 0 && stat.value < stat.maximum" side="left" class="left" (ionSwipe)="refresh()">
+        <button ion-button expandable (click)="refresh()">
                 <ion-icon name="refresh-circle">                          
                 </ion-icon>
-                Refresh
             </button>
     </ion-item-options>
-    <ion-item-options side="right">
-        <button ion-button (click)="removeStat()">
+    <ion-item-options side="right" class="right" (ionSwipe)="removeStat()">
+        <button ion-button expandable (click)="removeStat()">
                 <ion-icon name="trash">
                 </ion-icon>
-                Remove
             </button>
     </ion-item-options>
 </ion-item-sliding>
