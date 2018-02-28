@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
+
+import { Store } from '@ngrx/store';
+
+import * as fromRoot from '../../app/store/reducers';
+
+import * as NavActions from '../../app/store/actions/nav-actions';
 
 /**
  * Generated class for the AboutPage page.
@@ -15,11 +21,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private store: Store<fromRoot.State>) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutPage');
+  closeHelp() {
+    this.store.dispatch(new NavActions.Back()); 
   }
-
 }
