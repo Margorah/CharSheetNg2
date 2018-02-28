@@ -27,6 +27,14 @@ export class NavEffects {
             return null;
         });
 
+
+    @Effect({dispatch: false})
+    aboutNav$: Observable<Action> = this.actions$.ofType(NavActions.ABOUT)
+        .withLatestFrom(this.store$.select(fromRoot.getNavRootPage), (action, page) => {
+            this.navCtrl().setRoot(page);
+            return null;
+        });
+
     @Effect()
     // Add logic to not always dispatch unselect?
     charListNav$: Observable<Action> = this.actions$.ofType(NavActions.CHARACTER_LIST)
