@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export const ABOUT            = '[Nav] About'
+export const ABOUT_MENU       = '[Nav] About Menu'
 export const CREATE_USER      = '[Nav] Create User';
 export const LOGIN            = '[Nav] Login';
 export const CHARACTER_LIST   = '[Nav] Character List';
@@ -14,6 +15,11 @@ export const HELP_SLIDES_MENU = '[Nav] Help Slides Menu';
 
 export class About implements Action {
     readonly type = ABOUT;
+    constructor() { }
+}
+
+export class AboutMenu implements Action {
+    readonly type = ABOUT_MENU;
     constructor() { }
 }
 
@@ -70,6 +76,7 @@ export class HelpSlidesMenu implements Action {
 
 export type All
     = About
+    | AboutMenu
     | CreateUser
     | Login
     | CharacterList

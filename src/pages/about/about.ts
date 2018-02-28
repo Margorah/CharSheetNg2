@@ -20,11 +20,11 @@ import * as NavActions from '../../app/store/actions/nav-actions';
   templateUrl: 'about.html',
 })
 export class AboutPage {
-
+  closeText = 'Close';
   constructor(private store: Store<fromRoot.State>) {
   }
 
-  closeHelp() {
+  closeAbout() {
     this.store.dispatch(new NavActions.Back()); 
   }
 }

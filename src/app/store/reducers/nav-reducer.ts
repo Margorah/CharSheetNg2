@@ -18,11 +18,18 @@ const initialState: State = {
 
 export function reducer(state =  initialState, action: NavActions.All): State {
     switch(action.type) {
-        case NavActions.ABOUT: {
+        case NavActions.ABOUT_MENU: {
             return {
                 pages: state.pages,
                 root: state.root,
-                stack: 'about'                
+                stack: 'about'
+            };
+        }
+        case NavActions.ABOUT: {
+            return {
+                pages: state.pages,
+                root: 'about',
+                stack: null                
             }
         }
         case NavActions.LOGIN: {

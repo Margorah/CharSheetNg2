@@ -48,7 +48,7 @@ export class AppMenuComponent {
   }
 
   showAbout() {
-    this.store.dispatch(new NavActions.About());
+    this.store.dispatch(new NavActions.AboutMenu());
   }
 
   showHelp() {
