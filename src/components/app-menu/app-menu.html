@@ -33,6 +33,10 @@
                 <ion-icon name="help" item-start></ion-icon>
                 Help
             </button>
+            <button ion-item (click)="showAbout()" menuClose>
+                <ion-icon name="information" item-start></ion-icon>
+                About
+            </button>
             <!-- <div *ngIf="mode === templateModeTestVar; then logoutButton else loginButton"></div> -->
             <!-- <ng-template #logoutButton>
                 <button ion-item (click)="logout()" menuClose>
