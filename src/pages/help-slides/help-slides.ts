@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { IonicPage, Slides } from 'ionic-angular';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { IonicPage } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
@@ -11,31 +11,27 @@ import * as NavActions from '../../app/store/actions/nav-actions';
 import * as CharActions from '../../app/store/actions/character-actions';
 import * as PrefActions from '../../app/store/actions/preferences-actions';
 
+const SKIPTEXT = {
+  INITALRUN: 'Skip',
+  FROMMENU: 'Close'
+};
+
 @IonicPage()
 @Component({
   selector: 'page-help-slides',
   templateUrl: 'help-slides.html',
 })
 export class HelpSlidesPage {
-  @ViewChild(Slides) slides: Slides;
-  skipText = 'Skip';
-  appTitle = 'Simple Character Sheet';
-  statDemoTitle = 'The Contrived Example';
+  // @ViewChild(Slides) slides: Slides;
+  appTitle = 'Flexible Character Sheet';
   demoChar = 'Itzal';
   demoMob = 'Goblin';
-  demoMobArmor = 'Worn Jerkin';
-  demoMobArmorVal = 5;
-  demoMobArmorValMax = 20;
   demoMobExp = 500;
   demoMobDMG = 40;
-  demoMobDMGType = 'SDC';
   destroyedItem = 'Worn Duster';
   demoSpell = 'Fireball';
-  demoSpellCost = 15;
-  demoSpellType = 'PPE';
-  manaName = 'Mana';
-  newManaValue = 10;
 
+  skipText = SKIPTEXT.INITALRUN;
   fromMenu = false;
   changeInitSub: Subscription;
   changeInitObj: Observable<boolean>;
@@ -46,7 +42,7 @@ export class HelpSlidesPage {
   ngOnInit() {
     this.changeInitSub = this.store.subscribe((state) => {
       this.fromMenu = state.pref.init;
-      this.skipText = this.fromMenu ? 'Close' : 'Skip';
+      this.skipText = this.fromMenu ? SKIPTEXT.FROMMENU : SKIPTEXT.INITALRUN;
     });
     this.changeInitObj = this.store.select(fromRoot.getPrefInit);
   }
@@ -59,14 +55,6 @@ export class HelpSlidesPage {
       // this.store.dispatch(new UserActions.Load()); 
       this.store.dispatch(new CharActions.LoadMany());
     }
-  }
-
-  jumpToWalk() {
-    this.slides.slideTo(5);
-  }
-
-  jumpToAdd() {
-    this.slides.slideTo(12);
   }
 
   ngOnDestroy() {

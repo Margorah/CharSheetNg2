@@ -1,219 +1,90 @@
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>helpSlides</ion-title>
-  </ion-navbar>
-
-</ion-header> -->
-
 <ion-content padding>
     <ion-slides pager paginationType="progress">
         <ion-slide>
-            <h3>Catchphrase</h3>
+            <h3>{{appTitle}}</h3>
+            <!-- Icon Image ? -->
             <img src="" alt="">
             <section>
-                <h4></h4>
-                <p>Stop wasting countless notepads on your life total.</p>
+                <h4>Stop Wasting Notepads</h4>
+                <p>Easily track frequently-changing data related to your characters</p>
             </section>
         </ion-slide>
 
         <ion-slide>
-            <h3>Welcome</h3>
+            <h3>Characters</h3>
+            <!-- Icon Image ? -->
             <img src="" alt="">
             <section>
-                <h4></h4>
-                <p>{{appTitle}} allows you to easily track frequently-changing information about your characters.</p>
+                <h4>A List of Stats</h4>
+                <!-- Let's walk through an encounter to show how best to use this app -->
+                <p>Stats are any values that change: like Experience, Gold, or Life Total.</p>
             </section>
         </ion-slide>
 
-        <ion-slide>
-            <h3>Character Creation Is Easy</h3>
-            <img src="" alt="">
-            <section>
-                <h4></h4>
-                <p>Just click the
-                    <ion-icon name="add" isActive="false"></ion-icon>
-                    at the top and give them a name.
-                </p>
-            </section>
-        </ion-slide>
-
-        <ion-slide>
-            <h3>Death Is Merely A Hinderance</h3>
-            <img src="" alt="">
-            <section>
-                <h4></h4>
-                <p>Characters are easily deleted by sliding them left and clicking
-                    <ion-icon name="trash" isActive="false"></ion-icon>.
-                </p>
-            </section>
-        </ion-slide>
-
-        <ion-slide>
-            <h3>Character Sheet</h3>
-            <img src="" alt="">
-            <section>
-                <h4></h4>
-                <p>Characters are a collection of stats representing dynamic attributes.</p>
-            </section>
-        </ion-slide>
-
-        <!-- 
-           Should try to give an example using every type of interaction component. 
-        -->
         <ion-slide>
             <!-- SVG Image of crossed weapons? -->
-            <h3>{{statDemoTitle}}</h3>
+            <h3>Learning By Example</h3>
             <img src="" alt="">
             <section>
-                <h4>A Reoccuring Scuffle</h4>
+                <h4>A Contrived Encounter</h4>
                 <p>{{demoChar}} vs {{demoMob}}</p>
             </section>
         </ion-slide>
 
         <ion-slide>
             <!-- The Action stat should be one above minimum and use the + / - component -->
-            <h3>{{statDemoTitle}}</h3>
+            <h3>Recording Change</h3>
             <img src="" alt="">
             <section>
-                <h4>Recording Change</h4>
-                <p>{{demoChar}} shoot at {{demoMob}} and misses! Select Actions and click
+                <h4>Spending An Action</h4>
+                <p>{{demoChar}} swings at {{demoMob}} and misses! Select Actions and click
                     <ion-icon name="remove" isActive="false"></ion-icon> to document {{demoChar}}'s failure.</p>
             </section>
         </ion-slide>
 
         <ion-slide>
-            <h3>{{statDemoTitle}}</h3>
+            <h3>Removing Stats</h3>
             <img src="" alt="">
             <section>
-                <h4>Removing Stats</h4>
-                <p>{{demoMob}} hits {{demoChar}} for {{demoMobDMG}}! Slide {{destroyedItem}} left and click
-                    <ion-icon name="trash" isActive="false"></ion-icon> to destroy {{demoChar}}'s armor.</p>
+                <h4>Destroying Armor</h4>
+                <!-- Stats and Characters can be deleted this way -->
+                <p>{{demoMob}} hits {{demoChar}} for {{demoMobDMG}}! Slide {{destroyedItem}} left, it's useless now.</p>
             </section>
         </ion-slide>
 
         <ion-slide>
-            <h3>{{statDemoTitle}}</h3>
+            <h3>Resetting Stats</h3>
             <img src="" alt="">
             <section>
-                <h4>Resetting Stats</h4>
-                <p>Slide Actions to the right and click
-                    <ion-icon name="refresh" isActive="false"></ion-icon> to start a new round.</p>
+                <h4>A New Round</h4>
+                <p>{{demoMob}} is doomed now! Slide Actions to the right to begin anew.</p>
             </section>
         </ion-slide>
 
         <ion-slide>
             <!-- The Mana stat should be the slider component-->
-            <h3>{{statDemoTitle}}</h3>
+            <h3>Using A Slider</h3>
             <img src="" alt="">
             <section>
-                <h4>Sliders Can Work</h4>
-                <p>{{demoChar}} spends {{demoSpellCost}} to kill {{demoMob}} with {{demoSpell}}! Select {{manaName}} and drag the slider to {{newManaValue}}.</p>
+                <h4>Casting A Spell</h4>
+                <p>{{demoChar}} shoots {{demoSpell}} at {{demoMob}}, a direct hit! Select Mana and drag it to record the cost.</p>
             </section>
         </ion-slide>
 
         <ion-slide>
-            <!-- TheExperience stat should be the input component-->
-            <h3>{{statDemoTitle}}</h3>
+            <!-- The Experience stat should be the input component-->
+            <h3>Using The Keyboard</h3>
             <img src="" alt="">
             <section>
-                <h4>Typing Is Cool Too</h4>
-                <p>{{demoMob}} was worth {{demoMobExp}} experience. Select Experience, type {{demoMobExp}} and click
-                    <ion-icon name="add" isActive="false"></ion-icon>.</p>
-            </section>
-        </ion-slide>
-
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>Expanding</h4>
-                <p>{{demoMob}} was wearing a {{demoMobArmor}}. Click
-                    <ion-icon name="add" isActive="false"></ion-icon> at the top to add it.</p>
-            </section>
-        </ion-slide>
-
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>Name</h4>
-                <p>A Stat is really a collection of descriptive information. {{demoMobArmor}} is the name of your new armor.</p>
-            </section>
-        </ion-slide>
-
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>Value</h4>
-                <p>{{demoMobArmor}} has a current armor value of {{demoMobArmorVal}}.</p>
-            </section>
-        </ion-slide>
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>Maximum</h4>
-                <p>It seems {{demoMobArmor}}'s name is descriptive. It can be repaired up to a maximum of {{demoMobArmorValMax}}</p>
-            </section>
-        </ion-slide>
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>Refreshing</h4>
-                <p>Refreshing a stat sets its value to its maximum value</p>
-            </section>
-        </ion-slide>
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>No Maximum</h4>
-                <p>Click the
-                    <ion-icon name="close" isActive="false"></ion-icon> for stats like currency which may have no maximum.</p>
-            </section>
-        </ion-slide>
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>Type</h4>
-                <p>Some stats may of a distinctive classification. You may have a shield that protects from water and one that protects from fire.</p>
-            </section>
-        </ion-slide>
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>No Type</h4>
-                <p>Like maximum, click
-                    <ion-icon name="close" isActive="false"></ion-icon> for stats which need no type.</p>
-            </section>
-        </ion-slide>
-        <ion-slide>
-            <h3>Stat Creation</h3>
-            <img src="" alt="">
-            <section>
-                <h4>Interface</h4>
-                <p>{{appTitle}} has three different ways to interact with stats. Choose whichever seems most appropriate. Except for No Maximum and Slider. That just doesn't work.</p>
-            </section>
-        </ion-slide>
-        <ion-slide>
-            <h3>Finished</h3>
-            <img src="" alt="">
-            <section>
-                <h4>Thank You</h4>
-                <p>For a self described simple app that intro sure was long.</p>
+                <h4>Gaining Experience</h4>
+                <p>{{demoSpell}} kills {{demoMob}}! Select Experience then type {{demoMobExp}} and click
+                    <ion-icon name="add" isActive="false"></ion-icon> to add it.</p>
             </section>
         </ion-slide>
     </ion-slides>
     <ion-footer>
         <ion-toolbar>
             <ion-buttons end>
-                <button ion-button (click)="jumpToWalk()">How To</button>
-                <button ion-button (click)="jumpToAdd()">Add Stats</button>
                 <button ion-button (click)="closeHelp()">{{skipText}}</button>
             </ion-buttons>
         </ion-toolbar>
