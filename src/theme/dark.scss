@@ -160,5 +160,9 @@ $text-input-md-highlight-color: $primary;
         .swiper-pagination-progress .swiper-pagination-progressbar {
             background: $primary;
         }
+        ion-footer button {
+            color: $primaryText;
+            border-color: $primaryText;
+        }
     }
 }

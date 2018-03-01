@@ -34,4 +34,11 @@ page-help-slides {
         padding-left: .05em;
         padding-right: .05em;
     }
+    ion-footer button.disable-hover.bar-button {
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+        border-radius: 0px;
+        padding-left: 1em;
+    }
 }

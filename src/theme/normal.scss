@@ -140,5 +140,9 @@ $lightGrey: #F5F5F6;
         .swiper-pagination-progress .swiper-pagination-progressbar {
             background: $primary;
         }
+        ion-footer button {
+            color: $primaryText;
+            border-color: $primaryText;
+        }
     }
 }
