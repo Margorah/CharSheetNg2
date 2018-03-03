@@ -30,8 +30,8 @@ export class NavEffects {
 
     @Effect({dispatch: false})
     aboutNav$: Observable<Action> = this.actions$.ofType(NavActions.ABOUT)
-        .withLatestFrom(this.store$.select(fromRoot.getNavRootPage), (action, page) => {
-            this.navCtrl().setRoot(page);
+        .withLatestFrom(this.store$.select(fromRoot.getNavStackPage), (action, page) => {
+            this.navCtrl().push(page);
             return null;
         });
 
