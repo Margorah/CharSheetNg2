@@ -12,10 +12,11 @@ page-help-slides {
             // background-color: blue;
         }
         .imgWrapper {
-            height: 55%;
+            height: 50%;
             margin-left: .25em;
             margin-right: .25em;
-            margin-top: .25em;
+            margin-top: 1em;
+            margin-bottom: 1em;
         }
         img {
             width: 453px;
@@ -24,7 +25,6 @@ page-help-slides {
         section {
             height: 35%;
             // background-color: green;
-            padding-top: .75em;
             display: flex;
             flex-direction: column;
             justify-content: center;
