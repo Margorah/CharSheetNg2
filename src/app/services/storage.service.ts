@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Storage } from '@ionic/storage';
 
-import { UserState } from '../store/reducers/user-reducer';
+// import { UserState } from '../store/reducers/user-reducer';
 import { PreferenceState } from '../store/reducers/preferences-reducer';
  
 import { Character } from '../models/character-model';
@@ -10,7 +10,7 @@ import { CharacterStat } from '../models/stat-model';
 
 // Likely Need more unique names?
 const STORAGE = {
-    USERKEY: 'UserState',
+    // USERKEY: 'UserState',
     CHARACTERSKEY: 'CharMetaState',
     STATSKEY: 'StatMetaState',
     PREFSKEY: 'PrefState'
@@ -25,17 +25,17 @@ export class StorageService {
         return this.storage.driver;
     }
 
-    setUserState(user: UserState) {
-        return this.setItem(STORAGE.USERKEY, user);
-    }
+    // setUserState(user: UserState) {
+    //     return this.setItem(STORAGE.USERKEY, user);
+    // }
 
-    getUserState() {
-        return this.getItem(STORAGE.USERKEY);
-    }
+    // getUserState() {
+    //     return this.getItem(STORAGE.USERKEY);
+    // }
 
-    remUserState() {
-        return this.removeItem(STORAGE.USERKEY);
-    }
+    // remUserState() {
+    //     return this.removeItem(STORAGE.USERKEY);
+    // }
 
     setPrefState(pref: PreferenceState) {
         return this.setItem(STORAGE.PREFSKEY, pref);

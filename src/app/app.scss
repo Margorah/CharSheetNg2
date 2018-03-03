@@ -12,3 +12,26 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+ion-item-options:not([icon-left]) .button:not([icon-only]) ion-icon,
+ion-item-options:not([icon-start]) .button:not([icon-only]) ion-icon {
+    padding: 0.7em;
+}
+
+ion-item-options.right .button {
+    background-color: map-get($colors, danger);
+}
+
+ion-item-options.left .button {
+    background-color: map-get($colors, tertiary);
+}

@@ -26,11 +26,10 @@
                 <button ion-item (click)="selectCharacter(i)">
                     {{ character.name }}
                 </button>
-                <ion-item-options side="right">
-                    <button ion-button (click)="removeCharacter(character)">
+                <ion-item-options side="right" class="right" (ionSwipe)="removeCharacter(character)">
+                    <button ion-button expandable (click)="removeCharacter(character)">
                         <ion-icon name="trash">
                         </ion-icon>
-                        Remove
                     </button>
                 </ion-item-options>
             </ion-item-sliding>

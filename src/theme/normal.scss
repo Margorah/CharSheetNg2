@@ -22,6 +22,9 @@ $lightGrey: #F5F5F6;
     //         background-color: $primary;
     //     }
     // }
+    .list ion-item-options {
+        border-color: $lightGrey;
+    }
     .header {
         box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     }
@@ -115,6 +118,21 @@ $lightGrey: #F5F5F6;
             }
             input::placeholder {
                 color: darken($secondaryTextLight, 30%);
+            }
+        }
+        ion-reorder {
+            border-color: $lightGrey;
+        }
+    }
+    page-create-stat {
+        .item {
+            .propertyToggle {
+                background-color: $primaryDark;
+            }
+        }
+        .item-divider {
+            .propertyToggle {
+                background-color: $primary;
             }
         }
     }

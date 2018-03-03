@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'web-animations-js';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 // import { CommonModule } from '@angular/common';
 import { IonicStorageModule } from '@ionic/storage';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 
 // store import
 import { StoreModule } from '@ngrx/store';
@@ -20,21 +20,22 @@ import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 
 import { StorageService } from './services/storage.service';
-import { HttpService } from './services/http.service';
+// import { HttpService } from './services/http.service';
 
 import { AppComponent } from './app.component';
 import { AppMenuComponent } from '../components/app-menu/app-menu';
 import { SplashscreenComponent } from '../components/splashscreen/splashscreen';
 
 import { AboutPageModule } from '../pages/about/about.module';
-import { LoginUserPageModule } from '../pages/login-user/login-user.module';
-import { CreateUserPageModule } from '../pages/create-user/create-user.module';
+// import { LoginUserPageModule } from '../pages/login-user/login-user.module';
+// import { CreateUserPageModule } from '../pages/create-user/create-user.module';
 import { CharacterListPageModule } from '../pages/character-list/character-list.module';
 import { CreateCharacterPageModule } from '../pages/create-character/create-character.module';
 import { CharacterSheetPageModule } from '../pages/character-sheet/character-sheet.module';
 import { CreateStatPageModule } from '../pages/create-stat/create-stat.module';
 import { PreferencesPageModule } from '../pages/preferences/preferences.module';
 import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
+import { AboutPage } from '../pages/about/about';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,10 @@ import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(AppComponent),
+    IonicModule.forRoot(AppComponent, {
+      scrollPadding: false,
+      scrollAssist: false
+    }),
     IonicStorageModule.forRoot({
       name: 'charSheetIonicDB',
       // driverOrder: ['localstorage', 'sqlite', 'indexeddb']
@@ -59,10 +63,10 @@ import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
       maxAge: 25
     }),
     EffectsModule.forRoot(effects),
-    HttpModule,
+    // HttpModule,
+    // LoginUserPageModule,
+    // CreateUserPageModule,
     AboutPageModule,
-    LoginUserPageModule,
-    CreateUserPageModule,
     CharacterListPageModule,
     CreateCharacterPageModule,
     CharacterSheetPageModule,
@@ -72,9 +76,9 @@ import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
   ],
   providers: [
     StorageService,
-    HttpService,
+    // HttpService,
     StatusBar,
-    SplashScreen,
+    // SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
   bootstrap: [IonicApp]

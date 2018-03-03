@@ -3,7 +3,11 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>{{ title }}</ion-title>
+        <ion-title>
+            <div *ngIf="params.data === 'EDITMODE'; then edit else normal"></div>
+            <ng-template #normal>Create A Stat</ng-template>
+            <ng-template #edit>Edit {{ ( stat | async )?.name }}</ng-template>
+        </ion-title>
         <ion-buttons end>
             <button ion-button icon-only (click)="createStat()" form="createStatForm" type="submit" [disabled]="addStatForm.invalid">
                 <ion-icon name="create">
@@ -13,41 +17,87 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
     <form [formGroup]="addStatForm" id="createStatForm">
         <ion-list>
             <ion-item>
-                <ion-label floating>Name</ion-label>
-                <ion-input name="name" type="text" formControlName="name"></ion-input>
+                <ion-label floating>Name *</ion-label>
+                <ion-input name="name" tabindex="1" type="text" formControlName="name"></ion-input>
             </ion-item>
+            <p class="helpText" *ngIf="addStatForm.get('name').touched && addStatForm.get('name').invalid">
+                * Required
+            </p>
             <ion-item>
-                <ion-label floating>Value</ion-label>
-                <ion-input name="value" type="number" formControlName="value"></ion-input>
+                <ion-label floating>Value *</ion-label>
+                <ion-input name="value" tabindex="2" type="number" formControlName="value"></ion-input>
             </ion-item>
+            <p class="helpText" *ngIf="addStatForm.get('value').touched && addStatForm.get('value').invalid">
+                * Required
+            </p>
+            <div *ngIf="statHasAMax == true; then AMAX else NOMAX"></div>
+            <ng-template #AMAX>
+                <ion-item>
+                    <ion-label floating>Maximum *</ion-label>
+                    <ion-input name="maximum" tabindex="3" type="number" formControlName="maximum"></ion-input>
+                    <button (click)="toggleMax()" tabindex="0" class="propertyToggle" ion-button icon-only default item-right>
+                        <ion-icon name="close"></ion-icon>
+                    </button>
+                </ion-item>
+                <p class="helpText" *ngIf="addStatForm.get('maximum').touched && addStatForm.get('maximum').invalid
+                    || addStatForm.get('maximum').touched && addStatForm.get('maximum').value == 0">
+                    <ion-icon name="alert"></ion-icon> To declare no maximum please click
+                    <ion-icon name="close"></ion-icon>
+                </p>
+            </ng-template>
+            <ng-template #NOMAX>
+                <ion-item-divider>
+                    <span>No Maximum</span>
+                    <button (click)="toggleMax()" tabindex="0" class="propertyToggle" ion-button icon-only default item-right>
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                </ion-item-divider>
+            </ng-template>
+            <div *ngIf="statHasAType == true; then ATYPE else NOTYPE"></div>
+            <ng-template #ATYPE>
+                <ion-item>
+                    <ion-label floating>Type *</ion-label>
+                    <ion-input name="type" type="text" tabindex="4" formControlName="type"></ion-input>
+                    <button (click)="toggleType()" tabindex="0" class="propertyToggle" ion-button icon-only default item-right>
+                        <ion-icon name="close"></ion-icon>
+                    </button>
+                </ion-item>
+                <p class="helpText" *ngIf="addStatForm.get('type').touched && addStatForm.get('type').invalid">
+                    <ion-icon name="alert"></ion-icon> To declare no type please click
+                    <ion-icon name="close"></ion-icon>
+                </p>
+            </ng-template>
+            <ng-template #NOTYPE>
+                <ion-item-divider>
+                    <span>No Type</span>
+                    <button (click)="toggleType()" tabindex="0" class="propertyToggle" ion-button icon-only default item-right>
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                </ion-item-divider>
+            </ng-template>
             <ion-item>
-                <ion-label floating>Maximum</ion-label>
-                <ion-input name="maximum" type="number" formControlName="maximum"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Type</ion-label>
-                <ion-input name="type" type="text" formControlName="type"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>Interface</ion-label>
+                <ion-label floating>Interface *</ion-label>
                 <!-- <ion-input name="component" type="text" formControlName="component"></ion-input> -->
-                <ion-select interface="popover" name="component" formControlName="component">
+                <ion-select interface="popover" tabindex="0" name="component" formControlName="component">
                     <!-- unfortunately, for now, new components will be hand added -->
                     <ion-option value="form">Text</ion-option>
                     <ion-option value="button">Button</ion-option>
-                    <ion-option value="slide">Slider</ion-option>
+                    <ion-option *ngIf="statHasAMax === true" value="slide">Slider</ion-option>
                 </ion-select>
             </ion-item>
+            <!-- <ion-item *ngIf="addStatForm.get('maximum').value != 0">
+                {{addStatForm.get('maximum').value}}
+            </ion-item> -->
+            <p class="helpText" *ngIf="addStatForm.hasError('valueBelowZero')">
+                <ion-icon name="alert"></ion-icon> Values with a maximum must be greater than zero
+            </p>
+            <p class="helpText" *ngIf="addStatForm.hasError('valueAboveMax')">
+                <ion-icon name="alert"></ion-icon> Values must be less than their maximum
+            </p>
         </ion-list>
     </form>
 </ion-content>
-
-<!-- <ion-footer>
-    <ion-toolbar color="primary" padding-left padding-right>
-        <button ion-button full color="secondary" type="button" (click)="createStat()" [disabled]="addStatForm.invalid">Create Stat</button>
-    </ion-toolbar>
-</ion-footer> -->
