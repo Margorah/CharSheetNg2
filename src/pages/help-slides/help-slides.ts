@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, AfterViewInit } from '@angular/core';
+import { IonicPage, Slides } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
@@ -11,10 +11,13 @@ import * as NavActions from '../../app/store/actions/nav-actions';
 import * as CharActions from '../../app/store/actions/character-actions';
 import * as PrefActions from '../../app/store/actions/preferences-actions';
 
-const SKIPTEXT = {
-  INITALRUN: 'Skip',
-  FROMMENU: 'Close'
+const SKIP_TEXT = {
+  INITAL_RUN: 'Skip',
+  FROM_MENU: 'Close'
 };
+
+const URL_STUB = '../../assets/assets/help-slides/';
+const INDEX_BEFORE_ANIMS_START = 2;
 
 @IonicPage()
 @Component({
@@ -22,6 +25,10 @@ const SKIPTEXT = {
   templateUrl: 'help-slides.html',
 })
 export class HelpSlidesPage {
+  @ViewChild(Slides) slides: Slides;
+  // Array of all img views
+  @ViewChildren('imgs') images;
+  // imagesArray;
   appTitle = 'Flexible Character Sheet';
   demoChar = 'Vorq';
   demoMob = 'Goblin';
@@ -30,7 +37,7 @@ export class HelpSlidesPage {
   destroyedItem = 'Worn Duster';
   demoSpell = 'Fireball';
 
-  skipText = SKIPTEXT.INITALRUN;
+  skipText = SKIP_TEXT.INITAL_RUN;
   fromMenu = false;
   changeInitSub: Subscription;
   changeInitObj: Observable<boolean>;
@@ -41,9 +48,14 @@ export class HelpSlidesPage {
   ngOnInit() {
     this.changeInitSub = this.store.subscribe((state) => {
       this.fromMenu = state.pref.init;
-      this.skipText = this.fromMenu ? SKIPTEXT.FROMMENU : SKIPTEXT.INITALRUN;
+      this.skipText = this.fromMenu ? SKIP_TEXT.FROM_MENU : SKIP_TEXT.INITAL_RUN;
     });
     this.changeInitObj = this.store.select(fromRoot.getPrefInit);
+  }
+
+  ngAfterViewInit() {
+    // Create array of references to the img elements;
+    // this.imagesArray = this.images.toArray();
   }
 
   closeHelp() {
@@ -54,6 +66,51 @@ export class HelpSlidesPage {
       // this.store.dispatch(new UserActions.Load()); 
       this.store.dispatch(new CharActions.LoadMany());
     }
+  }
+
+  slideIncrease() {
+    const currSlide = this.slides.getActiveIndex();
+    const prevSlide = currSlide - 1;
+ 
+    // Slides with animations are 3 - end.
+    if (currSlide > INDEX_BEFORE_ANIMS_START) {
+      this.images.toArray().find((ele, index) => {
+        // replace previous slide with still if on slide 4 or greater
+        if (index == prevSlide && prevSlide > INDEX_BEFORE_ANIMS_START) {
+          ele.nativeElement.setAttribute('src', this.buildSrc('STILL', prevSlide));
+        }
+        if (index == currSlide) {
+          ele.nativeElement.setAttribute('src', this.buildSrc('ANIM', currSlide));
+        }
+      });
+    }
+  }
+
+  slideDecrease() {
+    const currSlide = this.slides.getActiveIndex();
+    const prevSlide = currSlide + 1;
+
+    if (currSlide >= INDEX_BEFORE_ANIMS_START) {
+      this.images.toArray().find((ele, index) => {
+        if (index == currSlide && currSlide > INDEX_BEFORE_ANIMS_START) {
+          ele.nativeElement.setAttribute('src', this.buildSrc('ANIM', currSlide));         
+        }
+        if (index == prevSlide && prevSlide > INDEX_BEFORE_ANIMS_START) {
+          ele.nativeElement.setAttribute('src', this.buildSrc('STILL', prevSlide));      
+        }
+      });
+    }
+  }
+
+  buildSrc(type: string, index: number): string {
+    let filename;
+
+    if (type == 'ANIM') {
+      filename = '/animation.gif';
+    } else {
+      filename = '/stillPre.png';
+    }
+    return URL_STUB + 'slide' + index + filename;
   }
 
   ngOnDestroy() {
