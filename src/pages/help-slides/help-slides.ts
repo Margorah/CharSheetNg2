@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewChildren } from '@angular/core';
 import { IonicPage, Slides } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../app/store/reducers';
 import * as NavActions from '../../app/store/actions/nav-actions';
-// import * as UserActions from '../../app/store/actions/user-actions';
 import * as CharActions from '../../app/store/actions/character-actions';
 import * as PrefActions from '../../app/store/actions/preferences-actions';
 
@@ -28,7 +27,6 @@ export class HelpSlidesPage {
   @ViewChild(Slides) slides: Slides;
   // Array of all img views
   @ViewChildren('imgs') images;
-  // imagesArray;
   appTitle = 'Flexible Character Sheet';
   demoChar = 'Vorq';
   demoMob = 'Goblin';
@@ -53,17 +51,11 @@ export class HelpSlidesPage {
     this.changeInitObj = this.store.select(fromRoot.getPrefInit);
   }
 
-  ngAfterViewInit() {
-    // Create array of references to the img elements;
-    // this.imagesArray = this.images.toArray();
-  }
-
   closeHelp() {
     if (this.fromMenu === true) {
       this.store.dispatch(new NavActions.Back());
     } else {
       this.store.dispatch(new PrefActions.ChangeInit(true));
-      // this.store.dispatch(new UserActions.Load()); 
       this.store.dispatch(new CharActions.LoadMany());
     }
   }
