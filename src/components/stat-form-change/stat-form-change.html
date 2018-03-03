@@ -1,5 +1,6 @@
 <ion-item class="formEdit">
-    <form [formGroup]="editStatForm">
+    <form [formGroup]="editStatForm" (ngSubmit)="formChange(stat, 'PLUS', $event)">
+        <button type="submit" style="display: none;"></button>
         <div>
             <ion-row>
                 <ion-col col-2>
