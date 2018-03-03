@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { IonicPage, Slides } from 'ionic-angular';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { IonicPage } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
@@ -22,12 +22,11 @@ const SKIPTEXT = {
   templateUrl: 'help-slides.html',
 })
 export class HelpSlidesPage {
-  @ViewChild(Slides) slides: Slides;
   appTitle = 'Flexible Character Sheet';
-  demoChar = 'Itzal';
+  demoChar = 'Vorq';
   demoMob = 'Goblin';
-  demoMobExp = 500;
-  demoMobDMG = 40;
+  demoMobExp = 100;
+  demoMobDMG = 20;
   destroyedItem = 'Worn Duster';
   demoSpell = 'Fireball';
 

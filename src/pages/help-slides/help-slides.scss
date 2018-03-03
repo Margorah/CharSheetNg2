@@ -6,18 +6,24 @@ page-help-slides {
         display: flex;
         flex-direction: column;
         height: 100%;
-        padding-top: 4em;
+        padding-top: 3.25em;
         padding-bottom: 2em;
         h3 {
             // background-color: blue;
         }
-        img {
+        .imgWrapper {
             height: 55%;
+            margin-left: .25em;
+            margin-right: .25em;
+        }
+        img {
+            width: 453px;
             // background-color: yellow;
         }
         section {
             height: 35%;
             // background-color: green;
+            padding-top: .75em;
             display: flex;
             flex-direction: column;
             justify-content: center;
