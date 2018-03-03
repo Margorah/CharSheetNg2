@@ -26,6 +26,7 @@ import { AppComponent } from './app.component';
 import { AppMenuComponent } from '../components/app-menu/app-menu';
 import { SplashscreenComponent } from '../components/splashscreen/splashscreen';
 
+import { AboutPageModule } from '../pages/about/about.module';
 // import { LoginUserPageModule } from '../pages/login-user/login-user.module';
 // import { CreateUserPageModule } from '../pages/create-user/create-user.module';
 import { CharacterListPageModule } from '../pages/character-list/character-list.module';
@@ -34,6 +35,7 @@ import { CharacterSheetPageModule } from '../pages/character-sheet/character-she
 import { CreateStatPageModule } from '../pages/create-stat/create-stat.module';
 import { PreferencesPageModule } from '../pages/preferences/preferences.module';
 import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
+import { AboutPage } from '../pages/about/about';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import { HelpSlidesPageModule } from '../pages/help-slides/help-slides.module';
     // HttpModule,
     // LoginUserPageModule,
     // CreateUserPageModule,
+    AboutPageModule,
     CharacterListPageModule,
     CreateCharacterPageModule,
     CharacterSheetPageModule,

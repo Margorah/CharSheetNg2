@@ -48,6 +48,10 @@ export class AppMenuComponent {
     this.store.dispatch(new NavActions.Preferences());
   }
 
+  showAbout() {
+    this.store.dispatch(new NavActions.About());
+  }
+
   showHelp() {
     this.store.dispatch(new NavActions.HelpSlidesMenu());
   }

@@ -18,6 +18,13 @@ const initialState: State = {
 
 export function reducer(state =  initialState, action: NavActions.All): State {
     switch(action.type) {
+        case NavActions.ABOUT: {
+            return {
+                pages: state.pages,
+                root: state.root,
+                stack: 'about'                
+            }
+        }
         // case NavActions.LOGIN: {
         //     return {
         //         pages: state.pages,

@@ -1,3 +1,4 @@
+import { AboutPage } from '../../pages/about/about';
 import { CharacterListPage } from '../../pages/character-list/character-list';
 import { CharacterSheetPage } from '../../pages/character-sheet/character-sheet';
 import { CreateCharacterPage } from '../../pages/create-character/create-character';
@@ -8,6 +9,7 @@ import { PreferencesPage } from '../../pages/preferences/preferences';
 import { HelpSlidesPage } from '../../pages/help-slides/help-slides';
 
 export const PAGES = {
+    'about': AboutPage,
     // 'login': LoginUserPage,
     // 'createUser': CreateUserPage,
     'charList': CharacterListPage,
