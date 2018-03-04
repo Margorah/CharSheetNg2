@@ -6,18 +6,25 @@ page-help-slides {
         display: flex;
         flex-direction: column;
         height: 100%;
-        padding-top: 4em;
+        padding-top: 3.25em;
         padding-bottom: 2em;
-        h3 {
-            // background-color: blue;
+        .iconWrapper {
+            height: 50%;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        .imgWrapper {
+            height: 50%;
+            margin-left: .25em;
+            margin-right: .25em;
+            margin-top: 2em;
         }
         img {
-            height: 55%;
-            // background-color: yellow;
+            width: 100%;
+            margin: 0 auto;
         }
         section {
             height: 35%;
-            // background-color: green;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -28,5 +35,17 @@ page-help-slides {
                 flex-grow: 1;
             }
         }
+    }
+    ion-icon::before {
+        font-size: .9em;
+        padding-left: .05em;
+        padding-right: .05em;
+    }
+    ion-footer button.disable-hover.bar-button {
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+        border-radius: 0px;
+        padding-left: 1em;
     }
 }
