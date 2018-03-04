@@ -63,15 +63,16 @@ export class HelpSlidesPage {
   slideIncrease() {
     const currSlide = this.slides.getActiveIndex();
     const prevSlide = currSlide - 1;
+    const zeroIndexLength = this.slides.length() - 1;
  
-    // Slides with animations are 3 - end.
+    // Slides with animations are between 3 and penultimate slide.
     if (currSlide > INDEX_BEFORE_ANIMS_START) {
       this.images.toArray().find((ele, index) => {
-        // replace previous slide with still if on slide 4 or greater
-        if (index == prevSlide && prevSlide > INDEX_BEFORE_ANIMS_START) {
+        // replace previous slide with still if the previous could have an animation
+        if (index == prevSlide && prevSlide > INDEX_BEFORE_ANIMS_START && prevSlide < (zeroIndexLength - 1)) {
           ele.nativeElement.setAttribute('src', this.buildSrc('STILL', prevSlide));
         }
-        if (index == currSlide) {
+        if (index == currSlide && currSlide < zeroIndexLength) {
           ele.nativeElement.setAttribute('src', this.buildSrc('ANIM', currSlide));
         }
       });
@@ -81,13 +82,14 @@ export class HelpSlidesPage {
   slideDecrease() {
     const currSlide = this.slides.getActiveIndex();
     const prevSlide = currSlide + 1;
+    const zeroIndexLength = this.slides.length() - 1;
 
     if (currSlide >= INDEX_BEFORE_ANIMS_START) {
       this.images.toArray().find((ele, index) => {
         if (index == currSlide && currSlide > INDEX_BEFORE_ANIMS_START) {
           ele.nativeElement.setAttribute('src', this.buildSrc('ANIM', currSlide));         
         }
-        if (index == prevSlide && prevSlide > INDEX_BEFORE_ANIMS_START) {
+        if (index == prevSlide && prevSlide > INDEX_BEFORE_ANIMS_START && prevSlide < zeroIndexLength) {
           ele.nativeElement.setAttribute('src', this.buildSrc('STILL', prevSlide));      
         }
       });
@@ -99,7 +101,7 @@ export class HelpSlidesPage {
 
     if (type == 'ANIM') {
       filename = '/animation.gif';
-    } else {
+    } else if (type == 'STILL') {
       filename = '/stillPre.png';
     }
     return URL_STUB + 'slide' + index + filename;
