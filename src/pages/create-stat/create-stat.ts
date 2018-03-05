@@ -137,7 +137,6 @@ export class CreateStatPage {
 
   valueBelowBounds(group: FormGroup): {[s: string]: boolean} {
     const ctrlValue = group.get('value');
-    const ctrlMaximum = group.get('maximum');
     if (this.statHasAMax == true && +ctrlValue.value < 0) {
       return {'valueBelowZero': true};
     } 

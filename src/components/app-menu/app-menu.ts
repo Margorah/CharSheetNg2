@@ -6,7 +6,7 @@ import * as fromRoot from '../../app/store/reducers';
 // import * as UserActions from '../../app/store/actions/user-actions';
 import * as NavActions from '../../app/store/actions/nav-actions';
 
-import * as PREFERENCES from '../../app/models/preferences-model';
+// import * as PREFERENCES from '../../app/models/preferences-model';
 
 @Component({
   selector: 'app-menu',
@@ -16,10 +16,9 @@ import * as PREFERENCES from '../../app/models/preferences-model';
 export class AppMenuComponent {
   @Input() content;
   // private user: Observable<string>;
-  private menuTitle = 'Menu';
   private mode: Observable<string>;
-  private templateModeTestVar = PREFERENCES.MODE.ONLINE;
-  private templateNameTestVar = '';
+  // private templateModeTestVar = PREFERENCES.MODE.ONLINE;
+  // private templateNameTestVar = '';
 
   constructor(private store: Store<fromRoot.State>) { }
 

@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit, OnDestroy, ViewChild, ElementRef, ViewContainerRef } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { style, state, animate, trigger, transition } from '@angular/animations';
@@ -19,7 +19,6 @@ import { StatButtonChangeComponent } from '../../components/stat-button-change/s
 import * as fromRoot from '../../app/store/reducers';
 import * as StatActions from '../../app/store/actions/stat-actions';
 import * as NavActions from '../../app/store/actions/nav-actions';
-import * as PrefActions from '../../app/store/actions/preferences-actions';
 
 @IonicPage()
 @Component({
@@ -50,26 +49,11 @@ import * as PrefActions from '../../app/store/actions/preferences-actions';
         animate(150)
       ])
     ])
-    // trigger('activeRangeHeight', [
-    //   state('in', style({
-    //     height: '*',
-    //     overflow: 'hidden'
-    //   })),
-    //   transition('void => *', [
-    //     style({
-    //       height: '0px',
-    //       overflow: 'hidden'
-    //     }),
-    //     animate(250)
-    //   ])
-    // ])
   ]
 })
 export class CharacterSheetPage {
   @ViewChild('statsContainer', { read: ViewContainerRef }) container: ViewContainerRef;
-  // private statsComponents = [];
   private character: Observable<Character>;
-  // private stats: Observable<CharacterStat[]>;
   private currId: string | null;
   private currRngVal  = 0;
   private reorderState = false;
@@ -94,14 +78,6 @@ export class CharacterSheetPage {
       this.buildComponentList(stats);
     });
   }
-
-  // ngAfterViewInit() {
-    // this.stats = this.store.select(fromRoot.getStats);
-
-    // this.store.select(fromRoot.getStats), (action, stats) => {
-    //   this.buildComponentList(stats);
-    // };
-  // }
 
   unselectStat() {
     this.store.dispatch(new StatActions.Unselect());
