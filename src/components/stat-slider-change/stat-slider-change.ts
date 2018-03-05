@@ -5,6 +5,7 @@ import { EditStatComponent } from '../edit-stat/edit-stat';
 import { CharacterStat } from '../../app/models/stat-model';
 
 const RANGETIMEOUT = 1750;
+const EVENTDEBOUNCE = RANGETIMEOUT / 3;
 
 @Component({
   selector: 'stat-slider-change',
