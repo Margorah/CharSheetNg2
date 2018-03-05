@@ -15,7 +15,7 @@ const SKIP_TEXT = {
   FROM_MENU: 'Close'
 };
 
-const URL_STUB = '../../assets/assets/help-slides/';
+const URL_STUB = 'assets/assets/help-slides/';
 const INDEX_BEFORE_ANIMS_START = 2;
 
 @IonicPage()
