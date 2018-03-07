@@ -23,11 +23,21 @@ $dividers: #212121;
 $text-input-md-highlight-color: $primary;
 // $range-md-pin-background-color: $primary;
 .dark-theme {
-    // splashscreen {
-    //     #splashContainer {
-    //         background-color: $primary;
-    //     }
-    // }
+    splashscreen {
+        #splashContainer {
+            background-color: #303030;
+            animation: color_change_dark 500ms linear both;
+            animation-delay: 125ms;
+            @keyframes color_change_dark {
+                from {
+                    background-color: #303030;
+                }
+                to {
+                    background-color: $primary;
+                }
+            }
+        }
+    }
     .list ion-item-options {
         border-color: $dividers;
     }
