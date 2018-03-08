@@ -6,6 +6,7 @@ import * as fromRoot from '../../app/store/reducers';
 // import * as UserActions from '../../app/store/actions/user-actions';
 import * as NavActions from '../../app/store/actions/nav-actions';
 
+import { GLOBALS } from '../../APP_GLOBALS';
 // import * as PREFERENCES from '../../app/models/preferences-model';
 
 @Component({
@@ -16,6 +17,7 @@ import * as NavActions from '../../app/store/actions/nav-actions';
 export class AppMenuComponent {
   @Input() content;
   // private user: Observable<string>;
+  private appName = GLOBALS.APP_NAME;
   private mode: Observable<string>;
   // private templateModeTestVar = PREFERENCES.MODE.ONLINE;
   // private templateNameTestVar = '';
