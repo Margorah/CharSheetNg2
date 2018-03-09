@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.margorah.flexiblecharactersheet" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Flexible Character Sheet</name>
-    <description>A servicable App that pretends to be a Character Sheet</description>
+<widget id="resourceTracker.rpg.com.margorah" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>RPG Resource Tracker</name>
+    <description>Easily track frequently-changing data on your Tabletop role-playing characters.</description>
     <author email="margorah@gmail.com" href="">Fritz Keck</author>
     <content src="index.html" />
     <access origin="*" />
