@@ -5,7 +5,11 @@ page-character-list {
         // border: 1px solid $primaryText;
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
         .item {
-            padding-right: 16px;
+            padding-left: 0;
+            .input-wrapper {
+                padding-right: 10px;
+                padding-left: 16px;
+            }
         }
         div:last-child .item .item-inner {
             border: none;
