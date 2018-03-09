@@ -2,5 +2,23 @@ app-menu {
     .taller {
         padding-top: 80px;
         padding-bottom: 18px;
+        .toolbar-title {
+            font-size: 1.25em;
+        }
+    }
+    .list .item-block {
+        font-size: 1.5rem;
+        // default font-size: 1.6rem;
+        .item-inner {
+            border: none;
+        }
+    }
+    .list .item>ion-icon {
+        font-size: 2.4rem;
+        padding-top: 0.05em;
+        // default font-size: 2.8rem
+    }
+    .underline {
+        border-bottom: 1px solid #dedede;
     }
 }
