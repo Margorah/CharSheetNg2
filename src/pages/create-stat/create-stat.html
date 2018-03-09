@@ -5,7 +5,7 @@
         </button>
         <ion-title>
             <div *ngIf="params.data === 'EDITMODE'; then edit else normal"></div>
-            <ng-template #normal>Create A Stat</ng-template>
+            <ng-template #normal>Stat Creation</ng-template>
             <ng-template #edit>Edit {{ ( stat | async )?.name }}</ng-template>
         </ion-title>
         <ion-buttons end>

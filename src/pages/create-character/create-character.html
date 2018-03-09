@@ -3,7 +3,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Create A Character</ion-title>
+        <ion-title>Character Creation</ion-title>
         <ion-buttons end>
             <button ion-button icon-only (click)="addCharacter()" type="submit" form="addChar" type="submit" [disabled]="addCharForm.invalid">
                 <ion-icon name="create">
@@ -17,7 +17,7 @@
     <form [formGroup]="addCharForm" id="addChar">
         <ion-list>
             <ion-item>
-                <ion-label floating>Character Name</ion-label>
+                <ion-label floating>Name *</ion-label>
                 <ion-input type="text" formControlName="name"></ion-input>
             </ion-item>
         </ion-list>
