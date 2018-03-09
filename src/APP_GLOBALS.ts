@@ -1,4 +1,4 @@
 export const GLOBALS = {
-    APP_NAME: 'Flexible Character Sheet',
+    APP_NAME: 'RPG Resource Tracker',
     APP_VERSION: '1.0.0'
 };
