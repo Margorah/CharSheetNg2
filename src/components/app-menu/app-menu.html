@@ -1,0 +1,56 @@
+<!-- Generated template for the AppDrawComponent component -->
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar class="taller">
+            <ion-title>
+                <!-- <div *ngIf="mode === templateModeTestVar || (user | async) !== templateNameTestVar; then onlineTitle else offlineTitle"></div>
+                <ng-template #onlineTitle>
+                    {{ user | async }}
+                </ng-template>
+                <ng-template #offlineTitle>
+                    <div *ngIf="(user | async) === templateNameTestVar; then noUser else login"></div>
+                    <ng-template #noUser>
+                    <button ion-button full (click)="createUser()" menuClose>Create User</button>
+                    </ng-template>
+                    <ng-template #login>
+                        <button ion-button full (click)="login()" menuClose>Login</button>
+                    </ng-template>
+                </ng-template> -->
+                {{ appName }}
+            </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button class="underline" ion-item (click)="charList()" menuClose>
+                <ion-icon name="people" item-start></ion-icon>
+                Characters
+            </button>
+            <button class="underline" ion-item (click)="prefNav()" menuClose>
+                <ion-icon name="settings" item-start></ion-icon>
+                Preferences
+            </button>
+            <button ion-item (click)="showHelp()" menuClose>
+                <ion-icon name="help" item-start></ion-icon>
+                Help
+            </button>
+            <button class="underline" ion-item (click)="showAbout()" menuClose>
+                <ion-icon name="information" item-start></ion-icon>
+                About
+            </button>
+            <!-- <div *ngIf="mode === templateModeTestVar; then logoutButton else loginButton"></div> -->
+            <!-- <ng-template #logoutButton>
+                <button ion-item (click)="logout()" menuClose>
+                            <ion-icon name="log-out" item-start></ion-icon>
+                            Log Out
+                        </button>
+            </ng-template>
+            <ng-template #loginButton>
+                <button ion-item (click)="login()" menuClose>
+                            <ion-icon name="log-in" item-start></ion-icon>
+                            Log In
+                        </button>
+            </ng-template> -->
+        </ion-list>
+    </ion-content>
+</ion-menu>

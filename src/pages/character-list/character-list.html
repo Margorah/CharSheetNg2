@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Characters</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="addCharacter()">
+                    <ion-icon name="add">
+                    </ion-icon>
+                </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <div *ngFor="let character of (characters | async); let i = index">
+            <ion-item-sliding>
+                <button ion-item (click)="selectCharacter(i)">
+                    {{ character.name }}
+                </button>
+                <ion-item-options side="right" class="right" (ionSwipe)="removeCharacter(character)">
+                    <button ion-button expandable (click)="removeCharacter(character)">
+                        <ion-icon name="trash">
+                        </ion-icon>
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </div>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-list class="slideEdit">
+    <ion-list-header>
+        <ion-row>
+            <ion-col col-2>
+                <button *ngIf="showMinus(stat.maximum, rangeValue)" (click)="rangeClick(stat, 'MINUS')" ion-button icon-only clear>
+          <ion-icon name="remove" ></ion-icon>
+      </button>
+            </ion-col>
+            <ion-col col-8 class="rangeValue">
+                {{ rangeValue }}
+            </ion-col>
+            <ion-col col-2>
+                <button *ngIf="showPlus(stat.maximum, rangeValue)" (click)="rangeClick(stat, 'PLUS')" ion-button icon-only clear>
+              <ion-icon name="add"></ion-icon>
+          </button>
+            </ion-col>
+        </ion-row>
+    </ion-list-header>
+</ion-list>

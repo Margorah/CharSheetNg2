@@ -1,0 +1,15 @@
+<ion-list class="slideEdit">
+    <div>
+        <!-- [@activeRangeHeight] -->
+        <ion-item>
+            <ion-range class="rangeSlider" min="0" max="{{rangeMax}}" [(ngModel)]="rangeValue" debounce="{{EVENTDEBOUNCE}}" (ionChange)="rangeChange(stat)">
+                <ion-label range-left class="rangeLeft">
+                    0
+                </ion-label>
+                <ion-label range-right class="rangeRight">
+                    {{rangeMax}}
+                </ion-label>
+            </ion-range>
+        </ion-item>
+    </div>
+</ion-list>

@@ -1,0 +1,28 @@
+stat-form-change {
+    .formEdit {
+        .item-inner {
+            box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.14);
+        }
+        .formEditInput input {
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            border: 0px;
+            border-bottom: 1px solid;
+        }
+        .row {
+            padding: .15em .25em .25em .25em;
+        }
+    }
+    .formEdit.item {
+        padding-left: 0px;
+    }
+    .item.item-block.item-input {
+        border: none;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+}

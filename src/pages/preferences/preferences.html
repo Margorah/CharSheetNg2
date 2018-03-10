@@ -1,0 +1,27 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Preferences</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-item-group>
+        <ion-item-divider>Appearance</ion-item-divider>
+        <button ion-item (click)="themeAlert()" class="one">
+            <span>Theme</span>
+            <span item-end>{{ themeVal }}</span>
+        </button>
+        <!-- <ion-item-divider>Connectivity</ion-item-divider>
+        <button [disabled]="(user | async) === templateUserTest" ion-item (click)="modeAlert()">
+            <span>Mode</span>
+            <span item-end>{{ modeVal }}</span>
+        </button>
+        <button [disabled]="mode !== templateModeTest" ion-item (click)="intervalAlert()">
+            <span>Interval</span>
+            <span item-end>{{ intervalVal / 1000 }} mins</span>
+        </button> -->
+    </ion-item-group>
+</ion-content>

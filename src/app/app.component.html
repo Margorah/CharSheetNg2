@@ -1,3 +1,6 @@
-<h1>
-  {{title}}
-</h1>
+<div class="{{ currentTheme | async | lowercase }}-theme">
+    <app-menu [content]="mycontent"></app-menu>
+    <ion-nav [root]="rootPage" #mycontent>
+    </ion-nav>
+    <splashscreen></splashscreen>
+</div>

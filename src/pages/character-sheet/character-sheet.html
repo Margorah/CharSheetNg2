@@ -1,0 +1,47 @@
+<ion-header [ngStyle]="{'background-color': (currentStat | async) ? 'red' : '#488aff' }">
+    <div *ngIf="(currentStat | async); then titleEdit else titleAdd"></div>
+    <ng-template #titleAdd>
+        <ion-navbar [@charTitle]>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>{{ ( character | async )?.name }}</ion-title>
+            <ion-buttons end>
+                <button ion-button icon-only (click)="toggleReorder()">
+                    <ion-icon name="customsort">
+                    </ion-icon>
+                </button>
+                <button ion-button icon-only (click)="createStat()">
+                    <ion-icon name="add">
+                    </ion-icon>
+                </button>
+            </ion-buttons>
+        </ion-navbar>
+    </ng-template>
+    <ng-template #titleEdit>
+        <ion-navbar class="editHeader" [@statTitle]>
+            <ion-title>
+                <div class="slideFlexWrap">
+                    <span>{{ ( currentStat | async )?.name }}</span>
+                    <span class="value" *ngIf="currRngVal != 0">{{ currRngVal }}</span>
+                </div>
+            </ion-title>
+            <ion-buttons end>
+                <button ion-button icon-only (click)="editStat()">
+                     <ion-icon name="open">
+                     </ion-icon>
+                </button>
+                <button ion-button icon-only (click)="unselectStat()">
+                    <ion-icon name="close">
+                    </ion-icon>
+                </button>
+            </ion-buttons>
+        </ion-navbar>
+    </ng-template>
+</ion-header>
+
+<ion-content>
+    <ion-list class="listFixer" [reorder]="reorderState" (ionItemReorder)="reorderItems($event)">
+        <ng-template #statsContainer></ng-template>
+    </ion-list>
+</ion-content>

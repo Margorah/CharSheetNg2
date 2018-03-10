@@ -1,0 +1,178 @@
+// Primary
+$primary: #ff6f00;
+$primaryDark: #c43e00;
+$primaryLight: #ffa040;
+// Primary Text
+$primaryText: #000000;
+$primaryTextLight: #ffffff;
+// Secondary
+$secondary: #4bb5ab;
+$secondaryDark: #00857c;
+$secondaryLight: #80e8dd;
+// Secondary Text
+$secondaryText: #000000;
+$secondaryTextLight: #ffffff;
+// Others
+$lightGrey: #F5F5F6;
+$background: #303030;
+$content: #424242;
+$dividers: #212121;
+// Others Text. FILL IN
+// variable changes. Should prolly move into class?
+// $toolbar-background: $primary;
+$text-input-md-highlight-color: $primary;
+// $range-md-pin-background-color: $primary;
+.dark-theme {
+    splashscreen {
+        #splashContainer {
+            background-color: #303030;
+            animation: color_change_dark 500ms linear both;
+            animation-delay: 125ms;
+            @keyframes color_change_dark {
+                from {
+                    background-color: #303030;
+                }
+                to {
+                    background-color: $primary;
+                }
+            }
+        }
+    }
+    .list ion-item-options {
+        border-color: $dividers;
+    }
+    .header {
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+    .toolbar {
+        .toolbar-background {
+            background-color: $primary;
+        }
+        .icon,
+        .toolbar-title {
+            color: $primaryText;
+        }
+        .button {
+            background-color: $secondary;
+            color: $secondaryText;
+        }
+        .button:hover {
+            background-color: lighten($secondary, 5%);
+        }
+    }
+    .content,
+    .list ion-item-sliding,
+    .item {
+        background-color: $content;
+        color: $primaryTextLight;
+        border-color: $dividers;
+    }
+    .input-has-focus .label {
+        color: $primary !important;
+    }
+    .item-divider {
+        background-color: $background;
+        color: darken($primaryTextLight, 50%);
+        border: none;
+    }
+    .item.item-block .item-inner {
+        border-color: $dividers;
+    }
+    form .item.item-block .item-inner,
+    form .list .item-input:last-child {
+        border-color: #999999;
+    }
+    // Change buttons: button ion-button
+    page-character-list {
+        .content {
+            background-color: $background;
+        }
+    }
+    page-character-sheet {
+        // Change slider refresh and delete icon buttons: ion-item-options button ion-button
+        .content {
+            background-color: $background;
+        }
+        .editHeader {
+            .toolbar-background {
+                background-color: $primaryDark !important;
+            }
+            .icon,
+            .toolbar-title {
+                color: $primaryTextLight !important;
+            }
+        }
+        .stat {
+            border-bottom-color: $dividers;
+        }
+        .list-header {
+            background-color: $secondaryDark;
+            color: $secondaryTextLight;
+            .button.button-clear {
+                color: $secondaryTextLight;
+            }
+        }
+        .item.item-block.item-input {
+            background-color: $secondaryDark;
+            color: $secondaryTextLight;
+        }
+        .input-has-focus .rangeSlider .label {
+            color: $secondaryTextLight !important;
+        }
+        .rangeSlider {
+            .range-bar {
+                background: $primaryDark;
+            }
+            .range-bar.range-bar-active,
+            .range-knob {
+                background: $primary;
+            }
+            .range-pin,
+            .range-pin::before {
+                background-color: $primary;
+            }
+        }
+        .item-range {
+            background-color: $secondaryDark;
+            color: $secondaryTextLight;
+        }
+        .formEdit {
+            background-color: $secondaryDark;
+            .button-clear {
+                color: $secondaryTextLight;
+            }
+            .formEditInput input {
+                background-color: $secondaryDark;
+                color: $secondaryTextLight;
+                border-bottom-color: $secondaryTextLight;
+            }
+            input::placeholder {
+                color: darken($secondaryTextLight, 30%);
+            }
+        }
+        ion-reorder {
+            border-color: $dividers;
+        }
+    }
+    page-create-stat {
+        .item {
+            .propertyToggle {
+                background-color: $primaryDark;
+            }
+        }
+        .item-divider {
+            .propertyToggle {
+                background-color: $primary;
+            }
+        }
+    }
+    page-help-slides {
+        .swiper-pagination-progress .swiper-pagination-progressbar {
+            background: $primary;
+        }
+        ion-footer button {
+            color: $primaryText;
+            border-color: $primaryText;
+        }
+    }
+}

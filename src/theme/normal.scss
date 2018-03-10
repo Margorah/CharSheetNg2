@@ -1,0 +1,158 @@
+// Primary
+$primary: #2196f3;
+$primaryDark: #0069c0;
+$primaryLight: #6ec6ff;
+// Primary Text
+$primaryText: #000000;
+$primaryTextLight: #ffffff;
+// Secondary
+$secondary: #f27d21;
+$secondaryDark: #b94f00;
+$secondaryLight: #ffae53;
+// Secondary Text
+$secondaryText: #000000;
+$secondaryTextLight: #ffffff;
+// Others
+$lightGrey: #F5F5F6;
+// variable changes. Should prolly move into class?
+// $toolbar-background: $primary;
+.normal-theme {
+    splashscreen {
+        #splashContainer {
+            background-color: #303030;
+            animation: color_change_normal 500ms linear both;
+            animation-delay: 125ms;
+            @keyframes color_change_normal {
+                from {
+                    background-color: #303030;
+                }
+                to {
+                    background-color: $primary;
+                }
+            }
+        }
+    }
+    .list ion-item-options {
+        border-color: $lightGrey;
+    }
+    .header {
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+    .toolbar {
+        .toolbar-background {
+            background-color: $primary;
+        }
+        .icon,
+        .toolbar-title {
+            color: $primaryText;
+        }
+        .button {
+            background-color: $secondary;
+            color: $secondaryText;
+        }
+        .button:hover {
+            background-color: lighten($secondary, 5%);
+        }
+    }
+    .input-has-focus .label {
+        color: $secondary !important;
+    }
+    .item-divider {
+        background-color: #f4f4f4;
+        border: none;
+    }
+    .item.item-input.input-has-focus .item-inner,
+    .list .item-input.input-has-focus:last-child {
+        border-bottom-color: $secondary;
+        box-shadow: inset 0 -1px 0 0 $secondary;
+    }
+    // Change buttons: button ion-button
+    page-character-list {
+        .content {
+            background-color: $lightGrey;
+        }
+    }
+    page-character-sheet {
+        // Change slider refresh and delete icon buttons: ion-item-options button ion-button
+        .content {
+            background-color: $lightGrey;
+        }
+        .editHeader {
+            .toolbar-background {
+                background-color: $primaryDark !important;
+            }
+            .icon,
+            .toolbar-title {
+                color: $primaryTextLight !important;
+            }
+        }
+        .stat {
+            border-bottom-color: $lightGrey;
+        }
+        .list-header {
+            background-color: $secondaryDark;
+            color: $secondaryTextLight;
+            .button.button-clear {
+                color: $secondaryTextLight;
+            }
+        }
+        .item.item-block.item-input {
+            background-color: $secondaryDark;
+            color: $secondaryTextLight;
+        }
+        .input-has-focus .rangeSlider .label {
+            color: $secondaryTextLight !important;
+        }
+        .rangeSlider {
+            .range-bar {
+                background: $primaryDark;
+            }
+            .range-bar.range-bar-active,
+            .range-knob {
+                background: $primary;
+            }
+        }
+        .item-range {
+            background-color: $secondaryDark;
+            color: $secondaryTextLight;
+        }
+        .formEdit {
+            background-color: $secondaryDark;
+            .button-clear {
+                color: $secondaryTextLight;
+            }
+            .formEditInput input {
+                background-color: $secondaryDark;
+                color: $secondaryTextLight;
+                border-bottom-color: $secondaryTextLight;
+            }
+            input::placeholder {
+                color: darken($secondaryTextLight, 30%);
+            }
+        }
+        ion-reorder {
+            border-color: $lightGrey;
+        }
+    }
+    page-create-stat {
+        .item {
+            .propertyToggle {
+                background-color: $primaryDark;
+            }
+        }
+        .item-divider {
+            .propertyToggle {
+                background-color: $primary;
+            }
+        }
+    }
+    page-help-slides {
+        .swiper-pagination-progress .swiper-pagination-progressbar {
+            background: $primary;
+        }
+        ion-footer button {
+            color: $primaryText;
+            border-color: $primaryText;
+        }
+    }
+}
