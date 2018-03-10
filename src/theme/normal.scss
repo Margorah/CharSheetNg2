@@ -17,11 +17,21 @@ $lightGrey: #F5F5F6;
 // variable changes. Should prolly move into class?
 // $toolbar-background: $primary;
 .normal-theme {
-    // splashscreen {
-    //     #splashContainer {
-    //         background-color: $primary;
-    //     }
-    // }
+    splashscreen {
+        #splashContainer {
+            background-color: #303030;
+            animation: color_change_normal 500ms linear both;
+            animation-delay: 125ms;
+            @keyframes color_change_normal {
+                from {
+                    background-color: #303030;
+                }
+                to {
+                    background-color: $primary;
+                }
+            }
+        }
+    }
     .list ion-item-options {
         border-color: $lightGrey;
     }

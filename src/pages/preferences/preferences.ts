@@ -18,17 +18,17 @@ import * as PREFERENCES from '../../app/models/preferences-model';
 })
 export class PreferencesPage {
   @ViewChild(Navbar) navBar: Navbar;
-  private title = 'Preferences';
+  // private title = 'Preferences';
   private themeSub: Subscription;
   private themeVal: string;
   private modeSub: Subscription;
   private modeVal: string;
   private intervalSub: Subscription;
   private intervalVal: number;
-  private user: Observable<string>;
+  // private user: Observable<string>;
   private mode: Observable<string>;
-  private templateModeTest = PREFERENCES.MODE.ONLINE;
-  private templateUserTest = '';
+  // private templateModeTest = PREFERENCES.MODE.ONLINE;
+  // private templateUserTest = '';
 
   constructor(private store: Store<fromRoot.State>, public alertCtrl: AlertController) {
   }
@@ -74,51 +74,51 @@ export class PreferencesPage {
     alert.present();
   }
 
-  modeAlert() {
-    let alert = this.alertCtrl.create();
-    alert.setSubTitle('Choose Connection Mode');
-    alert.addInput({
-      type: 'radio',
-      label: PREFERENCES.MODE.OFFLINE,
-      value: PREFERENCES.MODE.OFFLINE,
-      checked: this.modeVal === PREFERENCES.MODE.OFFLINE ? true: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: PREFERENCES.MODE.ONLINE,
-      value: PREFERENCES.MODE.ONLINE,
-      checked: this.modeVal === PREFERENCES.MODE.ONLINE ? true: false
-    });
-    alert.addButton('Cancel');
-    alert.addButton({
-      text: 'OK',
-      handler: data => {
-        this.store.dispatch(new PrefActions.ChangeMode(data));
-      }
-    });
-    alert.present();
-  }
+  // modeAlert() {
+  //   let alert = this.alertCtrl.create();
+  //   alert.setSubTitle('Choose Connection Mode');
+  //   alert.addInput({
+  //     type: 'radio',
+  //     label: PREFERENCES.MODE.OFFLINE,
+  //     value: PREFERENCES.MODE.OFFLINE,
+  //     checked: this.modeVal === PREFERENCES.MODE.OFFLINE ? true: false
+  //   });
+  //   alert.addInput({
+  //     type: 'radio',
+  //     label: PREFERENCES.MODE.ONLINE,
+  //     value: PREFERENCES.MODE.ONLINE,
+  //     checked: this.modeVal === PREFERENCES.MODE.ONLINE ? true: false
+  //   });
+  //   alert.addButton('Cancel');
+  //   alert.addButton({
+  //     text: 'OK',
+  //     handler: data => {
+  //       this.store.dispatch(new PrefActions.ChangeMode(data));
+  //     }
+  //   });
+  //   alert.present();
+  // }
 
-  intervalAlert() {
-    let alert = this.alertCtrl.create();
-    alert.setSubTitle('Choose An Upload Interval');
-    for (let interval in PREFERENCES.INTERVAL) {
-      alert.addInput({
-        type: 'radio',
-        label: `${PREFERENCES.INTERVAL[interval] / 1000} mins`,
-        value: PREFERENCES.INTERVAL[interval],
-        checked: this.intervalVal === PREFERENCES.INTERVAL[interval] ? true: false
-      });
-    }
-    alert.addButton('Cancel');
-    alert.addButton({
-      text: 'OK',
-      handler: data => {
-        this.store.dispatch(new PrefActions.ChangeTimer(data));
-      }
-    });
-    alert.present();
-  }
+  // intervalAlert() {
+  //   let alert = this.alertCtrl.create();
+  //   alert.setSubTitle('Choose An Upload Interval');
+  //   for (let interval in PREFERENCES.INTERVAL) {
+  //     alert.addInput({
+  //       type: 'radio',
+  //       label: `${PREFERENCES.INTERVAL[interval] / 1000} mins`,
+  //       value: PREFERENCES.INTERVAL[interval],
+  //       checked: this.intervalVal === PREFERENCES.INTERVAL[interval] ? true: false
+  //     });
+  //   }
+  //   alert.addButton('Cancel');
+  //   alert.addButton({
+  //     text: 'OK',
+  //     handler: data => {
+  //       this.store.dispatch(new PrefActions.ChangeTimer(data));
+  //     }
+  //   });
+  //   alert.present();
+  // }
 
   ionViewDidLoad() {
     this.navBar.backButtonClick = (e: UIEvent) => {

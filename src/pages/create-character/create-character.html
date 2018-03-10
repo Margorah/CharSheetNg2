@@ -1,15 +1,9 @@
-<!--
-  Generated template for the CreateCharacterPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>{{ title }}</ion-title>
+        <ion-title>Character Creation</ion-title>
         <ion-buttons end>
             <button ion-button icon-only (click)="addCharacter()" type="submit" form="addChar" type="submit" [disabled]="addCharForm.invalid">
                 <ion-icon name="create">
@@ -23,15 +17,9 @@
     <form [formGroup]="addCharForm" id="addChar">
         <ion-list>
             <ion-item>
-                <ion-label floating>Character Name</ion-label>
+                <ion-label floating>Name *</ion-label>
                 <ion-input type="text" formControlName="name"></ion-input>
             </ion-item>
         </ion-list>
     </form>
 </ion-content>
-
-<!-- <ion-footer>
-    <ion-toolbar padding-left padding-right>
-        <button ion-button full (click)="addCharacter()" [disabled]="addCharForm.invalid" type="button">Create</button>
-    </ion-toolbar>
-</ion-footer> -->

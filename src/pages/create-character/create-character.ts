@@ -8,13 +8,6 @@ import * as fromRoot from '../../app/store/reducers';
 import * as CharacterActions from '../../app/store/actions/character-actions';
 import * as NavActions from '../../app/store/actions/nav-actions';
 
-/**
- * Generated class for the CreateCharacterPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-create-character',
@@ -23,8 +16,6 @@ import * as NavActions from '../../app/store/actions/nav-actions';
 })
 export class CreateCharacterPage {
   @ViewChild(Navbar) navBar: Navbar;
-  
-  private title = "Create A Character";
   private addCharForm: FormGroup;
   private name: FormControl;
   
@@ -39,7 +30,6 @@ export class CreateCharacterPage {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad CreateCharacterPage');
     this.navBar.backButtonClick = (e: UIEvent) => {
       this.store.dispatch(new NavActions.Back());
     };
@@ -47,7 +37,6 @@ export class CreateCharacterPage {
 
   addCharacter() {
     this.store.dispatch(new CharacterActions.Add(this.name.value));
-    // this.navCtrl.pop();
   }
 
 }

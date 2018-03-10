@@ -15,7 +15,7 @@ declare module "@ngrx/store/src/actions_subject" {
   }
 }
 
-const SPLASHDELAYTIMER = 2000;
+const SPLASHDELAYTIMER = 1250;
 
 @Component({
   selector: 'splashscreen',

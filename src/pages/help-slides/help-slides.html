@@ -1,14 +1,14 @@
 <ion-content padding>
     <ion-slides pager paginationType="progress" (ionSlideNextEnd)="slideIncrease()" (ionSlidePrevEnd)="slideDecrease()">
         <ion-slide>
-            <h3>{{appTitle}}</h3>
+            <h3>{{appName}}</h3>
             <!-- Icon Image ? -->
             <div class="iconWrapper">
-                <img #imgs src="../../assets/assets/icon/charsheet.svg" alt="">
+                <img #imgs src="assets/assets/icon/charsheet.svg" alt="">
             </div>
             <section>
                 <h4>Stop Wasting Notepads</h4>
-                <p>Easily track frequently-changing data related to your characters</p>
+                <p>Easily track frequently-changing data on your Tabletop role-playing characters.</p>
             </section>
         </ion-slide>
 
@@ -16,12 +16,12 @@
             <h3>Characters</h3>
             <!-- Picture of Stats Before Game -->
             <div class="imgWrapper">
-                <img #imgs src="../../assets/assets/help-slides/slide3/stillPre.png" alt="">
+                <img #imgs src="assets/assets/help-slides/slide3/stillPre.png" alt="">
             </div>
             <section>
                 <h4>A List of Stats</h4>
                 <!-- Let's walk through an encounter to show how best to use this app -->
-                <p>Stats are any values that change: like Experience, Gold, or Life Total.</p>
+                <p>Stats are any values that change, such as: experience, gold, or life total.</p>
             </section>
         </ion-slide>
 
@@ -29,11 +29,11 @@
             <!-- SVG Image of crossed weapons? -->
             <h3>Learning By Example</h3>
             <div class="iconWrapper">
-                <img #imgs src="../../assets/assets/icon/swords.svg" alt="">
+                <img #imgs src="assets/assets/icon/swords.svg" alt="">
             </div>
             <section>
-                <h4>A Contrived Encounter</h4>
-                <p>{{demoChar}} vs {{demoMob}}</p>
+                <h4>{{demoChar}} vs {{demoMob}}</h4>
+                <p>A contrived encounter.</p>
             </section>
         </ion-slide>
 
@@ -41,35 +41,37 @@
             <!-- The Action stat should be one above minimum and use the + / - component -->
             <h3>Recording Change</h3>
             <div class="imgWrapper">
-                <img #imgs src="../../assets/assets/help-slides/slide3/stillPre.png" alt="">
+                <img #imgs src="assets/assets/help-slides/slide3/stillPre.png" alt="">
             </div>
             <section>
-                <h4>Spending An Action</h4>
-                <p>{{demoChar}} swings at {{demoMob}} and misses! Select Actions and click
-                    <ion-icon name="remove" isActive="false"></ion-icon> to document {{demoChar}}'s failure.</p>
+                <h4>{{demoChar}} Attacks {{demoMob}} for 15!</h4>
+                <p>Spending an action is two clicks away.
+                    <!-- Select Actions and click
+                    <ion-icon name="remove" isActive="false"></ion-icon> to document {{demoChar}}'s failure. -->
+                </p>
             </section>
         </ion-slide>
 
         <ion-slide>
             <h3>Removing Stats</h3>
             <div class="imgWrapper">
-                <img #imgs src="../../assets/assets/help-slides/slide4/stillPre.png" alt="">
+                <img #imgs src="assets/assets/help-slides/slide4/stillPre.png" alt="">
             </div>
             <section>
-                <h4>Destroying Armor</h4>
+                <h4>{{demoMob}} Retaliates for {{demoMobDMG}}!</h4>
                 <!-- Stats and Characters can be deleted this way -->
-                <p>{{demoMob}} hits {{demoChar}} for {{demoMobDMG}}! Slide {{destroyedItem}} left, it's useless now.</p>
+                <p>Expired stats or characters can be deleted.</p>
             </section>
         </ion-slide>
 
         <ion-slide>
             <h3>Resetting Stats</h3>
             <div class="imgWrapper">
-                <img #imgs src="../../assets/assets/help-slides/slide5/stillPre.png" alt="">
+                <img #imgs src="assets/assets/help-slides/slide5/stillPre.png" alt="">
             </div>
             <section>
-                <h4>A New Round</h4>
-                <p>{{demoMob}} is doomed now! Slide Actions to the right to begin anew.</p>
+                <h4>Roll Initiative!</h4>
+                <p>Any stat with a maximum is simple to refresh.</p>
             </section>
         </ion-slide>
 
@@ -77,11 +79,11 @@
             <!-- The Mana stat should be the slider component-->
             <h3>Using A Slider</h3>
             <div class="imgWrapper">
-                <img #imgs src="../../assets/assets/help-slides/slide6/stillPre.png" alt="">
+                <img #imgs src="assets/assets/help-slides/slide6/stillPre.png" alt="">
             </div>
             <section>
-                <h4>Casting A Spell</h4>
-                <p>{{demoChar}} shoots {{demoSpell}} at {{demoMob}}, a direct hit! Select Mana and drag it to record the cost.</p>
+                <h4>{{demoChar}} Casts {{demoSpell}}</h4>
+                <p>You can also use a slider to adjust stat values.</p>
             </section>
         </ion-slide>
 
@@ -89,12 +91,11 @@
             <!-- The Experience stat should be the input component-->
             <h3>Using The Keyboard</h3>
             <div class="imgWrapper">
-                <img #imgs src="../../assets/assets/help-slides/slide7/stillPre.png" alt="">
+                <img #imgs src="assets/assets/help-slides/slide7/stillPre.png" alt="">
             </div>
             <section>
                 <h4>Gaining Experience</h4>
-                <p>{{demoSpell}} kills {{demoMob}}! Select Experience then type {{demoMobExp}} and click
-                    <ion-icon name="add" isActive="false"></ion-icon> to add it.</p>
+                <p>Text is available for when a button would be slow or a slider inaccurate.</p>
             </section>
         </ion-slide>
 
@@ -104,8 +105,8 @@
                 <img #imgs src="" alt="">
             </div>
             <section>
-                <h4>Thank You</h4>
-                <p>We appreciate you trying {{appTitle}}</p>
+                <h4>Thank You!</h4>
+                <p>We appreciate you trying {{appName}}.</p>
             </section>
         </ion-slide>
     </ion-slides>

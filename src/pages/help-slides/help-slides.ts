@@ -10,12 +10,14 @@ import * as NavActions from '../../app/store/actions/nav-actions';
 import * as CharActions from '../../app/store/actions/character-actions';
 import * as PrefActions from '../../app/store/actions/preferences-actions';
 
+import { GLOBALS } from '../../APP_GLOBALS';
+
 const SKIP_TEXT = {
   INITAL_RUN: 'Skip',
   FROM_MENU: 'Close'
 };
 
-const URL_STUB = '../../assets/assets/help-slides/';
+const URL_STUB = 'assets/assets/help-slides/';
 const INDEX_BEFORE_ANIMS_START = 2;
 
 @IonicPage()
@@ -27,12 +29,10 @@ export class HelpSlidesPage {
   @ViewChild(Slides) slides: Slides;
   // Array of all img views
   @ViewChildren('imgs') images;
-  appTitle = 'Flexible Character Sheet';
+  appName = GLOBALS.APP_NAME;
   demoChar = 'Vorq';
   demoMob = 'Goblin';
-  demoMobExp = 100;
   demoMobDMG = 20;
-  destroyedItem = 'Worn Duster';
   demoSpell = 'Fireball';
 
   skipText = SKIP_TEXT.INITAL_RUN;

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { Storage } from '@ionic/storage';
 
 // import { UserState } from '../store/reducers/user-reducer';

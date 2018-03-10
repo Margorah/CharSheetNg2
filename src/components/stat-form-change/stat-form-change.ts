@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-// import { Observable } from 'rxjs/Observable';
 
 import { Store } from '@ngrx/store';
 
@@ -15,9 +14,7 @@ import * as buttonUtils from '../../app/utilities/functions';
 })
 export class StatFormChangeComponent {
   @Input() stat: CharacterStat;
-  // @Input() index: number;
   @ViewChild('inputFocus') inputFoc: ElementRef;
-  // private stat: Observable<CharacterStat>;
 
   private editStatForm: FormGroup;
   private formValue: FormControl; 
@@ -26,7 +23,6 @@ export class StatFormChangeComponent {
   }
 
   ngOnInit() {
-    // this.stat = this.store.select(fromRoot.getStat);
     this.formValue = new FormControl('', Validators.required);
 
     this.editStatForm = new FormGroup({

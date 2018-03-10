@@ -7,7 +7,7 @@ import * as StatActions from '../../app/store/actions/stat-actions';
 import * as fromRoot from '../../app/store/reducers';
 
 const RANGETIMEOUT = 1250;
-const EVENTDEBOUNCE = RANGETIMEOUT / 3;
+
 @Component({
   selector: 'edit-stat',
   templateUrl: 'edit-stat.html'

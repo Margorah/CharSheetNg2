@@ -4,15 +4,8 @@ import { IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../app/store/reducers';
-
 import * as NavActions from '../../app/store/actions/nav-actions';
-
-/**
- * Generated class for the AboutPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { GLOBALS } from '../../APP_GLOBALS';
 
 @IonicPage()
 @Component({
@@ -20,7 +13,9 @@ import * as NavActions from '../../app/store/actions/nav-actions';
   templateUrl: 'about.html',
 })
 export class AboutPage {
-  closeText = 'Close';
+  private appName = GLOBALS.APP_NAME;
+  private appVersion = GLOBALS.APP_VERSION;
+
   constructor(private store: Store<fromRoot.State>) {
   }
 

@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 import { CharacterStat } from '../../models/stat-model';
-import { Character } from '../../models/character-model';
 
 export const ADD                        = '[Character-Stat] Add';
 // export const ADD_ERROR                  = '[Character-Stat] Add Error'
